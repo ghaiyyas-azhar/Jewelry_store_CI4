@@ -53,7 +53,10 @@
 <header class="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-primary/20">
 <nav class="max-w-[1440px] mx-auto px-10 h-24 flex items-center justify-between">
 <div class="flex items-center space-x-10">
-<a class="text-[10px] tracking-[0.4em] uppercase font-medium hover:text-primary transition-colors" href="#">Collections</a>
+<a class="text-[10px] tracking-[0.4em] uppercase font-medium hover:text-primary transition-colors"
+   href="<?= base_url('collections') ?>">
+   Collections
+</a>
 <a class="text-[10px] tracking-[0.4em] uppercase font-medium hover:text-primary transition-colors" href="#">Bespoke</a>
 </div>
 <div class="absolute left-1/2 -translate-x-1/2 text-center">
@@ -99,7 +102,6 @@
 <div class="max-w-xl mx-auto bg-white/40 backdrop-blur-md p-1.5 border border-white/60 shadow-sm">
 
 <form action="/search-boutique" method="post" class="flex flex-col md:flex-row">
-<?= csrf_field() ?>
 
 <div class="flex-grow relative">
 <span class="material-symbols-outlined absolute left-5 top-1/2 -translate-y-1/2 text-primary">location_on</span>
@@ -209,7 +211,6 @@ Search
 <h3 class="font-serif text-4xl mb-6 font-light">Join the Nahecididi Circle</h3>
 <p class="text-slate-500 mb-12 font-light text-lg tracking-wide">Access exclusive invitations to private viewings and early access to high jewelry collections.</p>
 <form action="/subscribe" method="post" class="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
-<?= csrf_field() ?>
 
 <input 
     name="email"

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Nahecididi - Boutique Pickup Scheduler</title>
+<title>Astra Choker Pickup Scheduler | Nahecididi</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&amp;family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
@@ -13,18 +13,20 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#c59f59",
-                        "background-light": "#f8f7f6",
-                        "background-dark": "#1e1a14",
+                        "primary": "#e8ba30",
+                        "primary-dark": "#cfa528",
+                        "background-light": "#fcfcfc",
+                        "background-dark": "#1a1814",
+                        "charcoal": "#1a1a1a",
+                        "marble-accent": "#f1f0ee"
                     },
                     fontFamily: {
-                        "display": ["Manrope", "sans-serif"],
-                        "serif": ["Cormorant Garamond", "serif"]
+                        "display": ["Noto Serif", "serif"]
                     },
                     borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
                         "full": "9999px"
                     },
                 },
@@ -33,196 +35,190 @@
     </script>
 <style type="text/tailwindcss">
         body {
-            font-family: 'Manrope', sans-serif;
-            -webkit-font-smoothing: antialiased;
+            font-family: 'Noto Serif', serif;
+            @apply bg-background-light text-charcoal;
         }
-        .brand-font {
-            font-family: 'Cormorant Garamond', serif;
+        .marble-bg {
+            background-color: #fcfcfc;
+            background-image: radial-gradient(circle at 20% 20%, rgba(232, 186, 48, 0.02) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 80%, rgba(232, 186, 48, 0.01) 0%, transparent 50%);
         }
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
+        .luxury-button {
+            @apply transition-all duration-300 active:scale-[0.98];
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+        .calendar-day {
+            @apply aspect-square flex items-center justify-center text-xs cursor-pointer transition-colors border border-transparent hover:border-primary/30;
+        }
+        .calendar-day.active {
+            @apply bg-charcoal text-white;
+        }
+        .calendar-day.muted {
+            @apply text-gray-300 pointer-events-none;
+        }
+        .time-slot {
+            @apply border border-gray-200 py-3 text-center text-[10px] tracking-widest uppercase cursor-pointer transition-all hover:border-primary hover:text-primary;
+        }
+        .time-slot.selected {
+            @apply border-primary bg-primary/5 text-primary font-bold;
         }
     </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-stone-800 dark:text-stone-200 min-h-screen">
-<header class="border-b border-stone-200 dark:border-stone-800 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md sticky top-0 z-50">
-<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-<div class="flex items-center gap-2">
-<span class="material-icons text-primary text-sm">lock</span>
-<span class="text-[10px] uppercase tracking-[0.2em] font-semibold text-stone-500">Secure Checkout</span>
+<body class="marble-bg min-h-screen flex flex-col">
+<header class="border-b border-primary/10 bg-white/90 backdrop-blur-md sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center space-x-12">
+<a class="text-2xl font-bold tracking-[0.3em] text-charcoal uppercase" href="#">Nahecididi</a>
 </div>
-<div class="brand-font text-3xl font-light tracking-[0.15em] text-stone-900 dark:text-white">
-            NAHECIDIDI
-        </div>
-<div class="flex items-center gap-4">
-<a class="text-[10px] text-stone-500 hover:text-primary transition-colors uppercase tracking-[0.2em] font-bold" href="#">Return to Boutique</a>
+<div class="flex items-center space-x-4 text-[10px] tracking-[0.2em] font-bold text-gray-400 uppercase">
+<span>Secure Checkout</span>
+<span class="material-symbols-outlined text-sm">lock</span>
 </div>
 </div>
 </header>
-<main class="max-w-7xl mx-auto px-6 py-12">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
-<div class="lg:col-span-7 space-y-12">
-<section>
-<div class="flex items-baseline gap-4 mb-8">
-<span class="text-3xl font-light text-primary brand-font italic">01</span>
-<h2 class="text-2xl font-light tracking-tight uppercase brand-font">Schedule Your Nahecididi Visit</h2>
-</div>
-<div class="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl p-8 shadow-sm">
-<div class="mb-10">
+<main class="flex-grow max-w-6xl mx-auto w-full px-6 py-12">
+<div class="flex flex-col lg:flex-row gap-16">
+<div class="flex-grow lg:w-3/5">
+<h1 class="text-3xl font-light tracking-tight mb-8">Schedule Your Boutique Pickup</h1>
+<section class="mb-10">
 <div class="flex items-center justify-between mb-6">
-<h3 class="font-medium text-stone-900 dark:text-white uppercase tracking-wider text-sm">October 2023</h3>
-<div class="flex gap-4">
-<button class="p-2 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-full text-stone-400"><span class="material-icons text-sm">chevron_left</span></button>
-<button class="p-2 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-full text-stone-400"><span class="material-icons text-sm">chevron_right</span></button>
+<h2 class="text-xs font-bold uppercase tracking-[0.2em]">Select Date</h2>
+<span class="text-[10px] text-primary uppercase font-bold tracking-widest">October 2024</span>
 </div>
-</div>
-<div class="grid grid-cols-7 gap-2 text-center text-[10px] uppercase tracking-widest text-stone-400 mb-4 font-bold">
+<div class="bg-white border border-gray-100 p-6 shadow-sm">
+<div class="grid grid-cols-7 gap-1 mb-4 text-center text-[9px] uppercase tracking-widest text-gray-400 font-bold">
 <div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div>
 </div>
-<div class="grid grid-cols-7 gap-1 text-sm">
-<button class="h-12 flex items-center justify-center text-stone-300 cursor-not-allowed">25</button>
-<button class="h-12 flex items-center justify-center text-stone-300 cursor-not-allowed">26</button>
-<button class="h-12 flex items-center justify-center text-stone-300 cursor-not-allowed">27</button>
-<button class="h-12 flex items-center justify-center text-stone-300 cursor-not-allowed">28</button>
-<button class="h-12 flex items-center justify-center text-stone-300 cursor-not-allowed">29</button>
-<button class="h-12 flex items-center justify-center text-stone-300 cursor-not-allowed">30</button>
-<button class="h-12 flex items-center justify-center hover:bg-stone-50 dark:hover:bg-stone-800 border border-transparent">1</button>
-<button class="h-12 flex items-center justify-center hover:bg-stone-50 dark:hover:bg-stone-800 border border-transparent">2</button>
-<button class="h-12 flex items-center justify-center hover:bg-stone-50 dark:hover:bg-stone-800 border border-transparent">3</button>
-<button class="h-12 flex items-center justify-center bg-primary text-white rounded-lg font-bold">4</button>
-<button class="h-12 flex items-center justify-center hover:bg-stone-50 dark:hover:bg-stone-800 border border-transparent">5</button>
-<button class="h-12 flex items-center justify-center hover:bg-stone-50 dark:hover:bg-stone-800 border border-transparent">6</button>
-<button class="h-12 flex items-center justify-center hover:bg-stone-50 dark:hover:bg-stone-800 border border-transparent">7</button>
-<button class="h-12 flex items-center justify-center hover:bg-stone-50 dark:hover:bg-stone-800 border border-transparent">8</button>
-<button class="h-12 flex items-center justify-center hover:bg-stone-50 dark:hover:bg-stone-800 border border-transparent">9</button>
-<button class="h-12 flex items-center justify-center hover:bg-stone-50 dark:hover:bg-stone-800 border border-transparent">10</button>
+<div class="grid grid-cols-7 gap-1">
+<div class="calendar-day muted">30</div>
+<div class="calendar-day">1</div>
+<div class="calendar-day">2</div>
+<div class="calendar-day">3</div>
+<div class="calendar-day">4</div>
+<div class="calendar-day">5</div>
+<div class="calendar-day">6</div>
+<div class="calendar-day">7</div>
+<div class="calendar-day">8</div>
+<div class="calendar-day">9</div>
+<div class="calendar-day">10</div>
+<div class="calendar-day">11</div>
+<div class="calendar-day active">12</div>
+<div class="calendar-day">13</div>
+<div class="calendar-day">14</div>
+<div class="calendar-day">15</div>
+<div class="calendar-day">16</div>
+<div class="calendar-day">17</div>
+<div class="calendar-day">18</div>
+<div class="calendar-day">19</div>
+<div class="calendar-day">20</div>
+<div class="calendar-day">21</div>
+<div class="calendar-day">22</div>
+<div class="calendar-day">23</div>
+<div class="calendar-day">24</div>
+<div class="calendar-day">25</div>
+<div class="calendar-day">26</div>
+<div class="calendar-day">27</div>
 </div>
+</div>
+</section>
+<section class="mb-10">
+<h2 class="text-xs font-bold uppercase tracking-[0.2em] mb-6">Available Time Slots</h2>
+<div class="grid grid-cols-3 gap-3">
+<div class="time-slot">10:00 AM</div>
+<div class="time-slot">11:30 AM</div>
+<div class="time-slot selected">01:00 PM</div>
+<div class="time-slot">02:30 PM</div>
+<div class="time-slot">04:00 PM</div>
+<div class="time-slot">05:30 PM</div>
+</div>
+</section>
+<section class="bg-primary/5 p-8 border border-primary/10">
+<h2 class="text-xs font-bold uppercase tracking-[0.2em] mb-4">Contact Details</h2>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-[9px] uppercase tracking-widest text-gray-500 mb-2">First Name</label>
+<input class="w-full bg-white border-gray-200 text-sm focus:ring-primary focus:border-primary py-3" type="text" value="Julianne"/>
 </div>
 <div>
-<h3 class="font-medium text-stone-900 dark:text-white uppercase tracking-wider text-sm mb-6 flex items-center gap-2">
-                            Available Appointments <span class="text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded-full font-bold">October 4</span>
-</h3>
-<div class="grid grid-cols-3 sm:grid-cols-4 gap-3">
-<button class="py-3 px-4 text-xs font-semibold border border-stone-200 dark:border-stone-700 rounded-lg hover:border-primary transition-all">10:00 AM</button>
-<button class="py-3 px-4 text-xs font-semibold bg-primary text-white border border-primary rounded-lg">11:30 AM</button>
-<button class="py-3 px-4 text-xs font-semibold border border-stone-200 dark:border-stone-700 rounded-lg hover:border-primary transition-all">01:00 PM</button>
-<button class="py-3 px-4 text-xs font-semibold border border-stone-200 dark:border-stone-700 rounded-lg opacity-40 cursor-not-allowed">02:30 PM</button>
-<button class="py-3 px-4 text-xs font-semibold border border-stone-200 dark:border-stone-700 rounded-lg hover:border-primary transition-all">04:00 PM</button>
-<button class="py-3 px-4 text-xs font-semibold border border-stone-200 dark:border-stone-700 rounded-lg hover:border-primary transition-all">05:30 PM</button>
+<label class="block text-[9px] uppercase tracking-widest text-gray-500 mb-2">Last Name</label>
+<input class="w-full bg-white border-gray-200 text-sm focus:ring-primary focus:border-primary py-3" type="text" value="Moore"/>
 </div>
-<p class="mt-6 text-xs text-stone-400 italic flex items-center gap-2">
-<span class="material-icons text-sm">info</span>
-                            All Nahecididi boutique visits include a private presentation and expert sizing.
-                        </p>
+<div class="col-span-2">
+<label class="block text-[9px] uppercase tracking-widest text-gray-500 mb-2">Email for Confirmation</label>
+<input class="w-full bg-white border-gray-200 text-sm focus:ring-primary focus:border-primary py-3" type="email" value="j.moore@client.com"/>
 </div>
 </div>
 </section>
-<section>
-<div class="flex items-baseline gap-4 mb-8">
-<span class="text-3xl font-light text-primary brand-font italic">02</span>
-<h2 class="text-2xl font-light tracking-tight uppercase brand-font">Collector Information</h2>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<div class="space-y-2">
-<label class="text-[10px] uppercase tracking-widest font-bold text-stone-500">Full Name</label>
-<input class="w-full bg-white dark:bg-stone-900 border-stone-200 dark:border-stone-800 rounded-lg focus:ring-primary focus:border-primary px-4 py-3 text-sm" placeholder="Julianne Vane" type="text"/>
-</div>
-<div class="space-y-2">
-<label class="text-[10px] uppercase tracking-widest font-bold text-stone-500">Email Address</label>
-<input class="w-full bg-white dark:bg-stone-900 border-stone-200 dark:border-stone-800 rounded-lg focus:ring-primary focus:border-primary px-4 py-3 text-sm" placeholder="j.vane@example.com" type="email"/>
-</div>
-<div class="space-y-2 md:col-span-2">
-<label class="text-[10px] uppercase tracking-widest font-bold text-stone-500">Phone Number (For SMS Reminders)</label>
-<input class="w-full bg-white dark:bg-stone-900 border-stone-200 dark:border-stone-800 rounded-lg focus:ring-primary focus:border-primary px-4 py-3 text-sm" placeholder="+1 (555) 000-0000" type="tel"/>
-</div>
-<div class="space-y-2 md:col-span-2">
-<label class="text-[10px] uppercase tracking-widest font-bold text-stone-500">Special Requests or Occasion</label>
-<textarea class="w-full bg-white dark:bg-stone-900 border-stone-200 dark:border-stone-800 rounded-lg focus:ring-primary focus:border-primary px-4 py-3 text-sm" placeholder="Is this a gift? Any specific requests for your Nahecididi experience..." rows="3"></textarea>
+<div class="mt-12">
+<a href="<?= base_url('success'); ?>"
+   class="luxury-button w-full bg-charcoal text-white py-6 text-xs font-bold tracking-[0.3em] uppercase hover:bg-black text-center block">
+    Confirm Pickup Appointment
+</a>
 </div>
 </div>
-</section>
-</div>
-<div class="lg:col-span-5">
-<div class="sticky top-32 space-y-8">
-<div class="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl overflow-hidden shadow-sm">
-<div class="h-48 relative">
-<img alt="Modern high-end street map visualization" class="w-full h-full object-cover grayscale contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHnfQx9B5FgtrDfviHVJAux2XMO0m0p_6L0ogOHwO5gaMLgZdL-1WsUjXIIe3CqA1D1c1jrqeQZxFRzKl12AiiX_NHHHvgD506ZpzznlG9pSDOBDwDAjjyNb8M0475QZ8CGZLxyrIZ1eB2jB2Nv2l_0xBEDuwbob4T4BJFeefAW9aIEM2XX6wNW05grAmZKCLPrkPncV4f4davOIdW5ujCXfyrA4GPQYXYHa5Bbj6ghjIxjO27voNN9cwy88hLtRi9tLdTsUyN_ok"/>
-<div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-<span class="material-icons text-primary text-4xl drop-shadow-lg">location_on</span>
-</div>
-</div>
-<div class="p-6">
-<h3 class="text-sm font-bold uppercase tracking-widest mb-2 brand-font">Nahecididi Flagship Boutique</h3>
-<p class="text-xs text-stone-500 leading-relaxed mb-4">
-                            26 Place Vendôme, 75001 Paris, France<br/>
-                            Open daily: 10:00 AM — 07:00 PM
-                        </p>
-<div class="flex gap-4 border-t border-stone-100 dark:border-stone-800 pt-4">
-<div class="flex items-center gap-1.5 text-[10px] uppercase tracking-tighter font-semibold text-stone-400">
-<span class="material-icons text-sm">local_bar</span> Private Lounge
-                            </div>
-<div class="flex items-center gap-1.5 text-[10px] uppercase tracking-tighter font-semibold text-stone-400">
-<span class="material-icons text-sm">diamond</span> Master Goldsmith
-                            </div>
-</div>
-</div>
-</div>
-<div class="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl p-6 shadow-sm">
-<h3 class="text-[10px] font-bold uppercase tracking-[0.2em] mb-6 pb-4 border-b border-stone-100 dark:border-stone-800 flex justify-between items-center">
-<span>Digital Receipt</span>
-<span class="brand-font text-primary italic font-normal normal-case text-base tracking-normal">Nahecididi</span>
-</h3>
-<div class="flex gap-4 mb-8">
-<div class="w-24 h-24 bg-background-light dark:bg-stone-800 rounded-lg overflow-hidden flex-shrink-0 border border-stone-100 dark:border-stone-700">
-<img alt="Luxury diamond gold necklace" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6BmVn44JH0TKpTSfHhLc_P8U9QiVf1WH7vCpPkZ_xr1iJAG9K5XAFTR_xabdUcgVhjFkxnmJL8VzPoVtLmjGI7wXo6_vPWWE5hMr6RRmA9Gzko4FumvrawDmmvl-oNuHJ4fvg5cfvzU4VSq-SQJejTQ4ltXhUgY4V_LNPxTuM3jtGmJFyK7GGsrRdu3vsZ8rttaxHpjx8ULiUoLizkBIGjfAV6XutE1ACfoZgyS1Ge_b4fekvlKZ19f1H6Im8tVhTRc5Tmo-yM1E"/>
+<aside class="w-full lg:w-2/5">
+<div class="sticky top-32">
+<div class="bg-white border border-gray-100 p-8 shadow-sm">
+<h2 class="text-xs font-bold uppercase tracking-[0.2em] mb-8 pb-4 border-b border-gray-50">Your Selection</h2>
+<div class="flex gap-6 mb-8">
+<div class="w-24 h-24 bg-marble-accent flex-shrink-0">
+<img alt="Astra Diamond Choker" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn1QKCpcE1NfKR3dvvYcclozLO29QRZET5ecKCwtAmHzr9O48is6LpVuFlm2SqfN_JjHpUIKIbD8twZkhZeBeMkzgLj25f0zDE7qV570kPD-3ZJrs0u0v5jUQNsI9f2dCp04ewGVu-zCM9nedwdA2pcgO2SZuALukoomA_IIDQWHnkVllCEGPolFpu__O-YBEWlrOyJ3rXTye831gGhNsCUQiJVTLtlD4v0spkMbUbb2ztajVYZ7Ea6bzMv72Zdb8QWqDla3EMmqo"/>
 </div>
 <div class="flex flex-col justify-center">
-<h4 class="text-sm font-medium text-stone-900 dark:text-white mb-1">Celestial Solitaire Necklace</h4>
-<p class="text-xs text-stone-500 mb-2">18k Champagne Gold • 1.5ct Diamond</p>
-<p class="text-sm font-bold text-primary">$12,450.00</p>
+<p class="text-[10px] uppercase tracking-widest text-primary font-bold mb-1">Celestial Light</p>
+<h3 class="text-sm font-medium tracking-tight mb-2">Astra Diamond Choker</h3>
+<p class="text-sm font-bold">$32,400</p>
 </div>
 </div>
-<div class="space-y-3 mb-8">
+<div class="space-y-6 pt-6 border-t border-gray-50">
+<div>
+<p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-3">Pickup Location</p>
+<div class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-3 text-xl">location_on</span>
+<div>
+<p class="text-xs font-bold text-charcoal leading-relaxed uppercase tracking-tight">New York Fifth Avenue Flagship</p>
+<p class="text-[11px] text-gray-500 mt-1">712 5th Ave, New York, NY 10019</p>
+<p class="text-[11px] text-primary font-medium mt-1 italic">Ready in 2 hours</p>
+</div>
+</div>
+</div>
+<div class="bg-marble-accent p-4 space-y-2">
 <div class="flex justify-between text-xs">
-<span class="text-stone-500">Subtotal</span>
-<span class="font-medium">$12,450.00</span>
+<span class="text-gray-500 uppercase tracking-widest text-[9px]">Subtotal</span>
+<span>$32,400.00</span>
 </div>
 <div class="flex justify-between text-xs">
-<span class="text-stone-500">Boutique Appointment</span>
-<span class="text-emerald-600 font-medium uppercase text-[10px] tracking-widest">Complimentary</span>
+<span class="text-gray-500 uppercase tracking-widest text-[9px]">Boutique Pickup</span>
+<span class="text-primary font-bold uppercase text-[9px] tracking-widest">Complimentary</span>
 </div>
-<div class="flex justify-between text-xs">
-<span class="text-stone-500">Tax (Estimated)</span>
-<span class="font-medium">$1,058.25</span>
-</div>
-<div class="pt-4 border-t border-stone-100 dark:border-stone-800 flex justify-between items-baseline">
-<span class="text-sm font-bold uppercase tracking-widest">Total</span>
-<span class="text-xl font-light text-stone-900 dark:text-white">$13,508.25</span>
+<div class="flex justify-between text-xs pt-2 border-t border-white/50">
+<span class="font-bold uppercase tracking-[0.1em]">Total</span>
+<span class="font-bold">$32,400.00</span>
 </div>
 </div>
-<button class="w-full bg-primary hover:bg-stone-800 dark:hover:bg-primary/90 text-white py-5 rounded-lg font-bold text-sm uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-2 group">
-                        Confirm Appointment
-                        <span class="material-icons text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
-</button>
-<p class="text-center mt-6 text-[10px] text-stone-400 uppercase tracking-widest">
-                        Secure payment processed by Nahecididi Concierge
-                    </p>
+<div class="flex items-center text-[10px] text-gray-400 italic">
+<span class="material-symbols-outlined text-sm mr-2">verified</span>
+                            Authenticity &amp; Boutique Service Guaranteed
+                        </div>
 </div>
 </div>
+<p class="text-center mt-6 text-[9px] text-gray-400 uppercase tracking-widest">
+                    Need assistance? Call <a class="text-primary hover:underline" href="#">1-800-NAHECIDIDI</a>
+</p>
 </div>
+</aside>
 </div>
 </main>
-<footer class="mt-20 border-t border-stone-200 dark:border-stone-800 py-12 bg-white dark:bg-stone-900">
-<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-<div class="flex gap-12 text-[10px] uppercase tracking-widest font-bold text-stone-400">
-<a class="hover:text-primary transition-colors" href="#">Client Service</a>
-<a class="hover:text-primary transition-colors" href="#">Sustainability</a>
-<a class="hover:text-primary transition-colors" href="#">Privacy</a>
+<footer class="mt-24 bg-white border-t border-primary/10 pt-12 pb-8">
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-[9px] text-gray-400 uppercase tracking-[0.2em]">
+<p>© 2024 Nahecididi Fine Jewelry. All Rights Reserved.</p>
+<div class="flex space-x-8">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Boutique Service</a>
+<a class="hover:text-primary transition-colors" href="#">Contact Us</a>
 </div>
-<p class="text-[10px] text-stone-400 uppercase tracking-[0.2em]">
-            © 2023 Nahecididi Fine Jewelry. All Rights Reserved.
-        </p>
 </div>
 </footer>
 

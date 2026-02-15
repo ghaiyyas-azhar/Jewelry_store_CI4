@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html class="light" lang="en"><head>
+<html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Nahecididi Jewelry Admin</title>
+<title>Nahecididi Admin | Overview Dashboard</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
@@ -13,18 +13,20 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#c59f59",
-                        "charcoal": "#1a1a1a",
-                        "background-light": "#f8f7f6",
+                        "primary": "#e8ba30",
+                        "primary-dark": "#cfa528",
                         "background-dark": "#121212",
+                        "charcoal": "#1a1a1a",
+                        "panel-dark": "#1e1e1e",
+                        "gold-accent": "#e8ba30"
                     },
                     fontFamily: {
-                        "display": ["Manrope"]
+                        "display": ["Noto Serif", "serif"]
                     },
                     borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
                         "full": "9999px"
                     },
                 },
@@ -33,325 +35,256 @@
     </script>
 <style type="text/tailwindcss">
         body {
-            font-family: 'Manrope', sans-serif;
+            font-family: 'Noto Serif', serif;
+            @apply bg-background-dark text-white;
         }
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
+        .admin-sidebar-item {
+            @apply flex items-center space-x-3 px-6 py-4 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 hover:text-primary hover:bg-white/5 transition-all;
         }
-        :root {
-            --primary-gold: #c59f59;
-            --charcoal-deep: #1a1a1a;
+        .admin-sidebar-item.active {
+            @apply text-primary bg-white/5 border-r-2 border-primary;
+        }
+        .luxury-card {
+            @apply bg-panel-dark border border-white/10 rounded-sm p-6;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+        .chart-grid-line {
+            stroke: rgba(255, 255, 255, 0.05);
+            stroke-width: 1;
         }
     </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-display min-h-screen flex">
-<aside class="w-64 border-r border-primary/10 bg-charcoal dark:bg-black hidden lg:flex flex-col sticky top-0 h-screen">
-<div class="p-8">
-<h1 class="text-2xl font-extrabold tracking-tight text-primary">NAHECIDIDI</h1>
-<p class="text-[10px] tracking-[0.2em] uppercase text-white/40 font-semibold">Boutique Admin</p>
+<body class="bg-background-dark">
+<div class="flex min-h-screen">
+<aside class="w-72 bg-charcoal border-r border-white/10 flex flex-col fixed h-full">
+<div class="p-8 border-b border-white/10">
+<a class="text-xl font-bold tracking-[0.3em] text-white uppercase" href="#">Nahecididi</a>
+<p class="text-[9px] tracking-[0.2em] text-primary mt-2 font-bold uppercase">Boutique Management</p>
 </div>
-<nav class="flex-1 px-4 space-y-2">
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 font-semibold transition-all" href="#">
-<span class="material-icons text-xl">dashboard</span>
-<span>Dashboard</span>
+<nav class="flex-1 py-6">
+<a class="admin-sidebar-item active" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span>Overview</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-white/60 hover:text-white hover:bg-white/5 transition-all" href="#">
-<span class="material-icons text-xl">inventory_2</span>
-<span>Inventory</span>
+<a class="admin-sidebar-item" href="#">
+<span class="material-symbols-outlined text-xl">shopping_bag</span>
+<span>Pickups</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-white hover:bg-white/5 transition-all font-semibold" href="#">
-<span class="material-icons text-xl">shopping_bag</span>
-<span>BOPIS Pickups</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-white/60 hover:text-white hover:bg-white/5 transition-all" href="#">
-<span class="material-icons text-xl">calendar_today</span>
+<a class="admin-sidebar-item" href="#">
+<span class="material-symbols-outlined text-xl">calendar_month</span>
 <span>Appointments</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-white/60 hover:text-white hover:bg-white/5 transition-all" href="#">
-<span class="material-icons text-xl">people</span>
+<a class="admin-sidebar-item" href="#">
+<span class="material-symbols-outlined text-xl">inventory_2</span>
+<span>Inventory</span>
+</a>
+<a class="admin-sidebar-item" href="#">
+<span class="material-symbols-outlined text-xl">group</span>
 <span>Clients</span>
 </a>
 </nav>
-<div class="p-6 border-t border-white/5">
-<div class="flex items-center gap-3 mb-6">
-<img class="w-10 h-10 rounded-full object-cover border border-primary/20" data-alt="Boutique Manager Portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_M0q5IwV6FJS4gETrTiQpczuCZJXTMwTrhVx2QgNVRZAntzsdW0gQ5Xn0ZkJmqgkSQxpazrvfzIYr644SD1U7duaRFSeevZurmkMustBpqCvG6HXwogouGxM1RRIfkFmka_MWmUv02ODl3m6POPFPLvoeRSjHrAT0a-VSW4iuRcUop0sxObmBeTkS2uAhZRKG9_lWH_wYR_I4PCxLUy0r-o3QBgbcctOV9U50kZPHrQR8va2dvBokxEkaepDRvAwurDFZqDk6Rtw"/>
+<div class="p-6 border-t border-white/10">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30 text-primary font-bold text-[10px]">
+                    NY
+                </div>
 <div>
-<p class="text-sm font-bold text-white">Julian V.</p>
-<p class="text-xs text-white/40">Boutique Manager</p>
+<p class="text-[10px] font-bold tracking-widest uppercase">New York Flagship</p>
+<p class="text-[9px] text-gray-500 uppercase">Station Manager</p>
 </div>
 </div>
-<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-white/60 hover:text-white hover:bg-white/5 transition-all text-sm" href="#">
-<span class="material-icons text-lg">settings</span>
-<span>Settings</span>
-</a>
 </div>
 </aside>
-<main class="flex-1 overflow-y-auto">
-<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10 px-8 py-6 flex justify-between items-center">
-<div>
-<h2 class="text-2xl font-bold tracking-tight text-charcoal dark:text-white">Admin Boutique Management</h2>
-<p class="text-sm opacity-50">Wednesday, October 25, 2023</p>
-</div>
-<div class="flex items-center gap-4">
+<main class="flex-1 ml-72 flex flex-col">
+<header class="h-20 bg-charcoal/50 backdrop-blur-md border-b border-white/10 px-8 flex items-center justify-between sticky top-0 z-50">
+<h2 class="text-xs font-bold tracking-[0.4em] uppercase text-gray-400">Dashboard / Overview</h2>
+<div class="flex items-center space-x-6">
 <div class="relative">
-<span class="material-icons p-2 bg-white dark:bg-slate-800 rounded-full border border-primary/10 cursor-pointer">notifications</span>
-<span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full border-2 border-background-light"></span>
+<input class="bg-white/5 border-white/10 text-[10px] uppercase tracking-widest py-2 px-4 focus:ring-primary focus:border-primary w-64 rounded-sm text-white" placeholder="Search orders..." type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-2 text-gray-500 text-sm">search</span>
 </div>
-<div class="flex items-center gap-2 bg-white dark:bg-slate-800 px-4 py-2 rounded-full border border-primary/10">
-<span class="w-2 h-2 bg-green-500 rounded-full"></span>
-<span class="text-xs font-semibold tracking-wide uppercase">Store Open</span>
-</div>
+<button class="text-gray-400 hover:text-white transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-1.5 h-1.5 bg-primary rounded-full"></span>
+</button>
 </div>
 </header>
-<section class="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-primary/10 shadow-sm">
-<p class="text-xs uppercase tracking-widest font-bold opacity-50 mb-1">Total Pickups</p>
-<div class="flex items-end justify-between">
-<h3 class="text-3xl font-bold">24</h3>
-<span class="text-xs text-green-600 bg-green-100 px-2 py-1 rounded">+12% vs yest.</span>
+<div class="p-12 max-w-7xl w-full mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="luxury-card border-l-2 border-l-primary">
+<p class="text-[10px] uppercase tracking-[0.3em] text-gray-500 mb-2">Total Daily Sales</p>
+<div class="flex items-baseline space-x-2">
+<span class="text-3xl font-light text-white">$142,800</span>
+<span class="text-[10px] text-green-500 font-bold">+12% vs. yesterday</span>
 </div>
 </div>
-<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-primary/10 shadow-sm">
-<p class="text-xs uppercase tracking-widest font-bold opacity-50 mb-1">Awaiting Collection</p>
-<div class="flex items-end justify-between">
-<h3 class="text-3xl font-bold">08</h3>
-<span class="text-xs text-amber-600 bg-amber-100 px-2 py-1 rounded">High Priority</span>
+<div class="luxury-card border-l-2 border-l-primary">
+<p class="text-[10px] uppercase tracking-[0.3em] text-gray-500 mb-2">Pending Pickups</p>
+<div class="flex items-baseline space-x-2">
+<span class="text-3xl font-light text-white">04</span>
+<span class="text-[10px] text-primary font-bold uppercase tracking-widest">High Priority</span>
 </div>
 </div>
-<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-primary/10 shadow-sm border-l-4 border-l-primary">
-<p class="text-xs uppercase tracking-widest font-bold opacity-50 mb-1">Daily Value</p>
-<div class="flex items-end justify-between">
-<h3 class="text-3xl font-bold">$142,500</h3>
-<span class="material-icons text-primary">auto_graph</span>
+<div class="luxury-card border-l-2 border-l-primary">
+<p class="text-[10px] uppercase tracking-[0.3em] text-gray-500 mb-2">Active Appointments</p>
+<div class="flex items-baseline space-x-2">
+<span class="text-3xl font-light text-white">08</span>
+<span class="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Until 8:00 PM</span>
 </div>
 </div>
-<div class="bg-white dark:bg-slate-800 p-6 rounded-xl border border-primary/10 shadow-sm">
-<p class="text-xs uppercase tracking-widest font-bold opacity-50 mb-1">Avg. Processing</p>
-<div class="flex items-end justify-between">
-<h3 class="text-3xl font-bold">14<span class="text-sm font-normal opacity-50">min</span></h3>
-<span class="material-icons text-slate-400">timer</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 luxury-card">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h3 class="text-xs font-bold uppercase tracking-[0.3em] text-white">Performance Trends</h3>
+<p class="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Weekly Sales Revenue</p>
+</div>
+<div class="flex space-x-4">
+<button class="text-[9px] font-bold text-primary uppercase border-b border-primary pb-1">Week</button>
+<button class="text-[9px] font-bold text-gray-500 uppercase hover:text-white pb-1 transition-colors">Month</button>
 </div>
 </div>
-</section>
-<section class="px-8 pb-12">
-<div class="bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-primary/10 overflow-hidden">
-<div class="p-6 border-b border-primary/10 flex flex-col md:flex-row md:items-center justify-between gap-4">
-<div class="flex p-1 bg-background-light dark:bg-slate-800 rounded-lg w-fit border border-primary/5">
-<button class="px-6 py-2 rounded-md bg-white dark:bg-slate-700 shadow-sm text-sm font-bold text-primary transition-all">Today's Schedule</button>
-<button class="px-6 py-2 rounded-md text-sm font-medium opacity-50 hover:opacity-100 transition-all">Upcoming</button>
-<button class="px-6 py-2 rounded-md text-sm font-medium opacity-50 hover:opacity-100 transition-all">Past</button>
+<div class="h-64 w-full relative">
+<svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 800 200">
+<line class="chart-grid-line" x1="0" x2="800" y1="40" y2="40"></line>
+<line class="chart-grid-line" x1="0" x2="800" y1="80" y2="80"></line>
+<line class="chart-grid-line" x1="0" x2="800" y1="120" y2="120"></line>
+<line class="chart-grid-line" x1="0" x2="800" y1="160" y2="160"></line>
+<path d="M0,160 L133,140 L266,100 L400,120 L533,60 L666,80 L800,40" fill="none" stroke="#e8ba30" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M0,160 L133,140 L266,100 L400,120 L533,60 L666,80 L800,40 V200 H0 Z" fill="url(#goldGradient)" opacity="0.1"></path>
+<defs>
+<linearGradient id="goldGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#e8ba30;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#e8ba30;stop-opacity:0"></stop>
+</linearGradient>
+</defs>
+<circle cx="0" cy="160" fill="#e8ba30" r="3"></circle>
+<circle cx="133" cy="140" fill="#e8ba30" r="3"></circle>
+<circle cx="266" cy="100" fill="#e8ba30" r="3"></circle>
+<circle cx="400" cy="120" fill="#e8ba30" r="3"></circle>
+<circle cx="533" cy="60" fill="#e8ba30" r="3"></circle>
+<circle cx="666" cy="80" fill="#e8ba30" r="3"></circle>
+<circle cx="800" cy="40" fill="#e8ba30" r="3"></circle>
+</svg>
+<div class="flex justify-between mt-4">
+<span class="text-[9px] text-gray-500 uppercase font-bold">Mon</span>
+<span class="text-[9px] text-gray-500 uppercase font-bold">Tue</span>
+<span class="text-[9px] text-gray-500 uppercase font-bold">Wed</span>
+<span class="text-[9px] text-gray-500 uppercase font-bold">Thu</span>
+<span class="text-[9px] text-gray-500 uppercase font-bold">Fri</span>
+<span class="text-[9px] text-gray-500 uppercase font-bold">Sat</span>
+<span class="text-[9px] text-gray-500 uppercase font-bold">Sun</span>
 </div>
-<div class="flex items-center gap-3">
-<div class="relative group">
-<span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
-<input class="pl-10 pr-4 py-2 bg-background-light dark:bg-slate-800 border-none rounded-lg text-sm focus:ring-1 focus:ring-primary w-64 transition-all" placeholder="Search orders..." type="text"/>
 </div>
-<button class="flex items-center gap-2 px-4 py-2 border border-primary/20 rounded-lg text-sm font-semibold hover:bg-primary/5">
-<span class="material-icons text-sm">tune</span>
-                        Filters
+</div>
+<div class="luxury-card">
+<h3 class="text-xs font-bold uppercase tracking-[0.3em] text-white mb-6">Recent Activity</h3>
+<div class="space-y-6">
+<div class="flex items-start space-x-4 border-b border-white/5 pb-4">
+<div class="w-8 h-8 rounded-sm bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">payments</span>
+</div>
+<div class="flex-1">
+<p class="text-[10px] font-bold text-white uppercase tracking-wider">Transaction Complete</p>
+<p class="text-[9px] text-gray-500 mt-1 uppercase">Astra Diamond Choker • $32,400</p>
+<p class="text-[8px] text-primary/70 mt-1">2 mins ago</p>
+</div>
+</div>
+<div class="flex items-start space-x-4 border-b border-white/5 pb-4">
+<div class="w-8 h-8 rounded-sm bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">inventory_2</span>
+</div>
+<div class="flex-1">
+<p class="text-[10px] font-bold text-white uppercase tracking-wider">Status Updated</p>
+<p class="text-[9px] text-gray-500 mt-1 uppercase">Order #7742: Ready for Pickup</p>
+<p class="text-[8px] text-primary/70 mt-1">15 mins ago</p>
+</div>
+</div>
+<div class="flex items-start space-x-4 border-b border-white/5 pb-4">
+<div class="w-8 h-8 rounded-sm bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">calendar_today</span>
+</div>
+<div class="flex-1">
+<p class="text-[10px] font-bold text-white uppercase tracking-wider">New Appointment</p>
+<p class="text-[9px] text-gray-500 mt-1 uppercase">Julianna Mercer • Private Viewing</p>
+<p class="text-[8px] text-primary/70 mt-1">45 mins ago</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="w-8 h-8 rounded-sm bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+</div>
+<div class="flex-1">
+<p class="text-[10px] font-bold text-white uppercase tracking-wider">Pickup Confirmed</p>
+<p class="text-[9px] text-gray-500 mt-1 uppercase">Elysian Drops • Client Collected</p>
+<p class="text-[8px] text-primary/70 mt-1">1 hour ago</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-8 py-3 border border-white/10 text-[9px] font-bold uppercase tracking-[0.2em] text-gray-400 hover:text-primary hover:border-primary transition-all">
+                        View All Activity
                     </button>
 </div>
 </div>
-<div class="overflow-x-auto">
-<table class="w-full text-left border-collapse">
-<thead>
-<tr class="bg-background-light/50 dark:bg-slate-800/50 text-charcoal/60 dark:text-white/40">
-<th class="px-8 py-4 text-xs font-bold uppercase tracking-widest">Order ID</th>
-<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest">Customer</th>
-<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest">Scheduled Time</th>
-<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest">Item Value</th>
-<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest">Status</th>
-<th class="px-8 py-4 text-xs font-bold uppercase tracking-widest text-right">Actions</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-primary/5">
-<tr class="hover:bg-primary/5 transition-colors group">
-<td class="px-8 py-6 font-mono text-sm font-bold">#NH-90210</td>
-<td class="px-6 py-6">
-<div class="flex items-center gap-3">
-<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-xs font-bold text-primary">EC</div>
+<div class="mt-12">
+<h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-primary mb-6">High Priority Fulfillment</h4>
+<div class="luxury-card overflow-hidden ring-1 ring-primary/30 shadow-2xl shadow-primary/5">
+<div class="bg-primary/10 border-b border-primary/20 px-8 py-4 flex justify-between items-center -mx-6 -mt-6 mb-6">
+<span class="text-[10px] font-bold uppercase tracking-[0.3em] text-primary flex items-center">
+<span class="material-symbols-outlined text-sm mr-2">priority_high</span>
+                            Astra Choker Pickup Entry
+                        </span>
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] bg-primary text-black px-3 py-1 rounded-full">
+                            Ready for Pickup
+                        </span>
+</div>
+<div class="flex flex-col lg:flex-row lg:items-center gap-12">
+<div class="flex items-center space-x-6 lg:w-1/3">
+<div class="w-24 h-24 bg-charcoal rounded overflow-hidden border border-white/5">
+<img alt="Astra Diamond Choker" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn1QKCpcE1NfKR3dvvYcclozLO29QRZET5ecKCwtAmHzr9O48is6LpVuFlm2SqfN_JjHpUIKIbD8twZkhZeBeMkzgLj25f0zDE7qV570kPD-3ZJrs0u0v5jUQNsI9f2dCp04ewGVu-zCM9nedwdA2pcgO2SZuALukoomA_IIDQWHnkVllCEGPolFpu__O-YBEWlrOyJ3rXTye831gGhNsCUQiJVTLtlD4v0spkMbUbb2ztajVYZ7Ea6bzMv72Zdb8QWqDla3EMmqo"/>
+</div>
 <div>
-<p class="font-bold text-sm">Eleanor Campbell</p>
-<p class="text-xs opacity-50">VIP Platinum Member</p>
+<p class="text-[10px] text-primary uppercase font-bold tracking-widest mb-1">SKU: NH-AST-2024</p>
+<h3 class="text-lg font-medium text-white">Astra Diamond Choker</h3>
+<p class="text-sm text-gray-500 italic">18k White Gold, 4.5 CTW</p>
 </div>
 </div>
-</td>
-<td class="px-6 py-6 text-sm">
-<span class="flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                                10:30 AM <span class="opacity-50">(In 15m)</span>
-</span>
-</td>
-<td class="px-6 py-6 font-bold text-sm">$42,000</td>
-<td class="px-6 py-6">
-<span class="px-3 py-1 bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 text-[10px] font-bold uppercase tracking-wider rounded border border-amber-200 dark:border-amber-800">
-                                Ready for Pickup
-                            </span>
-</td>
-<td class="px-8 py-6 text-right">
-<button class="bg-primary hover:bg-primary/90 text-white text-xs font-bold px-4 py-2 rounded-lg transition-all shadow-md shadow-primary/20">
-                                Mark Collected
+<div class="flex-1 grid grid-cols-2 md:grid-cols-3 gap-8">
+<div>
+<p class="text-[10px] text-gray-500 uppercase tracking-widest mb-2">Customer</p>
+<p class="text-sm font-bold text-white uppercase tracking-wider">Julianna Mercer</p>
+<p class="text-[10px] text-gray-400 mt-1 uppercase">VVIP Platinum Client</p>
+</div>
+<div>
+<p class="text-[10px] text-gray-500 uppercase tracking-widest mb-2">Scheduled Time</p>
+<p class="text-sm font-bold text-white uppercase tracking-wider flex items-center">
+<span class="material-symbols-outlined text-primary text-sm mr-2">schedule</span>
+                                    2:00 PM
+                                </p>
+<p class="text-[10px] text-gray-400 mt-1 uppercase">Today</p>
+</div>
+<div class="hidden md:block">
+<p class="text-[10px] text-gray-500 uppercase tracking-widest mb-2">Order Value</p>
+<p class="text-sm font-bold text-white tracking-wider">$32,400.00</p>
+<p class="text-[10px] text-green-500 mt-1 uppercase">Payment Confirmed</p>
+</div>
+</div>
+<div class="flex flex-col space-y-3 lg:w-64">
+<button class="w-full bg-primary hover:bg-primary-dark text-black py-3 text-[10px] font-bold uppercase tracking-[0.2em] transition-all rounded-sm">
+                                Mark as Collected
                             </button>
-</td>
-</tr>
-<tr class="hover:bg-primary/5 transition-colors group">
-<td class="px-8 py-6 font-mono text-sm font-bold">#NH-90184</td>
-<td class="px-6 py-6">
-<div class="flex items-center gap-3">
-<div class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-xs font-bold">MH</div>
-<div>
-<p class="font-bold text-sm">Marcus Holloway</p>
-<p class="text-xs opacity-50">First-time Buyer</p>
-</div>
-</div>
-</td>
-<td class="px-6 py-6 text-sm">
-<span class="opacity-50">11:45 AM</span>
-</td>
-<td class="px-6 py-6 font-bold text-sm">$8,450</td>
-<td class="px-6 py-6">
-<span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-500 text-[10px] font-bold uppercase tracking-wider rounded border border-slate-200 dark:border-slate-700">
-                                Awaiting Collection
-                            </span>
-</td>
-<td class="px-8 py-6 text-right">
-<button class="bg-primary/10 hover:bg-primary/20 text-primary text-xs font-bold px-4 py-2 rounded-lg transition-all">
-                                View Details
+<button class="w-full border border-white/20 hover:border-primary/50 text-white py-3 text-[10px] font-bold uppercase tracking-[0.2em] transition-all rounded-sm">
+                                View Order Details
                             </button>
-</td>
-</tr>
-<tr class="hover:bg-primary/5 transition-colors group">
-<td class="px-8 py-6 font-mono text-sm font-bold">#NH-90152</td>
-<td class="px-6 py-6">
-<div class="flex items-center gap-3">
-<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-xs font-bold text-primary">SW</div>
-<div>
-<p class="font-bold text-sm">Sophia Wellington</p>
-<p class="text-xs opacity-50">VIP Gold Member</p>
 </div>
 </div>
-</td>
-<td class="px-6 py-6 text-sm">
-<span class="opacity-50">01:15 PM</span>
-</td>
-<td class="px-6 py-6 font-bold text-sm">$118,200</td>
-<td class="px-6 py-6">
-<span class="px-3 py-1 bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 text-[10px] font-bold uppercase tracking-wider rounded border border-amber-200 dark:border-amber-800">
-                                Ready for Pickup
-                            </span>
-</td>
-<td class="px-8 py-6 text-right">
-<button class="bg-primary hover:bg-primary/90 text-white text-xs font-bold px-4 py-2 rounded-lg transition-all shadow-md shadow-primary/20">
-                                Mark Collected
-                            </button>
-</td>
-</tr>
-<tr class="opacity-50 bg-slate-50 dark:bg-slate-800/20 grayscale transition-colors">
-<td class="px-8 py-6 font-mono text-sm font-bold">#NH-89871</td>
-<td class="px-6 py-6">
-<div class="flex items-center gap-3">
-<img class="w-8 h-8 rounded-full object-cover" data-alt="Client Avatar Photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALgsO7fEamGLO27Xzkf9Mik3JnoeJoH-m-5TAnNw7Q__gbXTCMYywL_UbxlkvffGV7fopj8aUS9LF-UnQWhzhFy2CvQwzWEgn69bRBbHjmz4SHiS9xZ8wEJd92LHENQwxmUnDRRvYeF6p9RCSkSXcMDfdcF_cXMAOIVA8RpfsXOC-s18_XbeniOOqa2KHUYpHM267YbhjrIM7S0ewrxU_fCbMyF_M4WHkUWsQiooScmCf9owUmJEvHkhyRKLODrLl0wtrR4tlLpNo"/>
-<div>
-<p class="font-bold text-sm">Isabella Thorne</p>
-<p class="text-xs">VIP Diamond Member</p>
-</div>
-</div>
-</td>
-<td class="px-6 py-6 text-sm">
-                            09:00 AM
-                        </td>
-<td class="px-6 py-6 font-bold text-sm">$56,000</td>
-<td class="px-6 py-6">
-<span class="px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-[10px] font-bold uppercase tracking-wider rounded border border-green-200 dark:border-green-800">
-                                Collected
-                            </span>
-</td>
-<td class="px-8 py-6 text-right">
-<span class="text-xs font-semibold uppercase italic px-4 py-2">Success</span>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="p-6 bg-background-light/30 dark:bg-slate-800/30 flex justify-between items-center text-sm">
-<p class="opacity-50">Showing 5 of 24 daily pickups</p>
-<div class="flex gap-2">
-<button class="p-2 border border-primary/10 rounded-lg hover:bg-white dark:hover:bg-slate-700 disabled:opacity-30" disabled="">
-<span class="material-icons text-sm">chevron_left</span>
-</button>
-<button class="p-2 border border-primary/10 rounded-lg bg-white dark:bg-slate-700 shadow-sm font-bold text-primary">1</button>
-<button class="p-2 border border-primary/10 rounded-lg hover:bg-white dark:hover:bg-slate-700 text-charcoal/50">2</button>
-<button class="p-2 border border-primary/10 rounded-lg hover:bg-white dark:hover:bg-slate-700 text-charcoal/50">3</button>
-<button class="p-2 border border-primary/10 rounded-lg hover:bg-white dark:hover:bg-slate-700">
-<span class="material-icons text-sm">chevron_right</span>
-</button>
-</div>
-</div>
-</div>
-</section>
-<div class="fixed top-0 right-0 w-[450px] h-screen bg-white dark:bg-slate-900 shadow-2xl border-l border-primary/10 z-50 transform translate-x-full lg:translate-x-0 hidden lg:block overflow-y-auto translate-x-full">
-<div class="p-8">
-<div class="flex justify-between items-center mb-10">
-<h3 class="text-xl font-bold text-charcoal dark:text-white">Order Details</h3>
-<button class="material-icons opacity-50 hover:opacity-100 transition-all">close</button>
-</div>
-<div class="mb-8 p-6 bg-primary/5 rounded-xl border border-primary/10">
-<p class="text-xs font-bold uppercase tracking-widest text-primary mb-4">Customer Profile</p>
-<div class="flex items-center gap-4 mb-6">
-<div class="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center text-2xl font-bold text-primary">EC</div>
-<div>
-<h4 class="text-lg font-bold text-charcoal dark:text-white">Eleanor Campbell</h4>
-<p class="text-sm opacity-60">e.campbell@example.com</p>
-<p class="text-sm font-semibold text-primary mt-1">Lifetime Spend: $248,000</p>
-</div>
-</div>
-<div class="grid grid-cols-2 gap-4 text-xs">
-<div class="p-3 bg-white dark:bg-slate-800 rounded-lg border border-primary/5">
-<p class="opacity-50 mb-1 font-bold uppercase tracking-tighter">Preferred Metal</p>
-<p class="font-bold">Platinum</p>
-</div>
-<div class="p-3 bg-white dark:bg-slate-800 rounded-lg border border-primary/5">
-<p class="opacity-50 mb-1 font-bold uppercase tracking-tighter">Ring Size</p>
-<p class="font-bold">5.5</p>
-</div>
-</div>
-</div>
-<div class="mb-10">
-<p class="text-xs font-bold uppercase tracking-widest opacity-50 mb-6">Items to be Picked Up</p>
-<div class="flex gap-4 p-4 border border-primary/10 rounded-xl mb-4 group hover:bg-background-light dark:hover:bg-slate-800 transition-all">
-<div class="w-20 h-20 rounded-lg overflow-hidden bg-slate-100">
-<img class="w-full h-full object-cover" data-alt="Diamond Ring Close-up" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrQEy991NB_E3roZuHs84FThbNhDr3D2j1sU4SBUFXZrjU_ZnIsTnOAPi6AK6YsDNlf6FWKgfncDMGESmeZjJU4n5WabXoqm-RABFitqvkGfMShfgPFvDPfQ1l86mfxjryR8lzUJ0_9jMl-qAcz80A5W2AV_G36au7E6wQuzbER2C7hnXASHKyDoD1ms8sdM5tW4VK2B0jUQa1LkUcXZzOdY-O0nrGywLOX1Dtif4YpsMDeZiUEa_GQc9MLRIZiHuHnp9a6xy6wIo"/>
-</div>
-<div class="flex-1 flex flex-col justify-center">
-<p class="font-bold text-sm text-charcoal dark:text-white">Lumiere Solitaire Ring</p>
-<p class="text-xs opacity-50">2.5 Carat, Platinum Band</p>
-<p class="text-sm font-bold text-primary mt-1">$42,000.00</p>
-</div>
-</div>
-</div>
-<div class="space-y-4">
-<button class="w-full py-4 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
-                    Complete Pickup
-                </button>
-<button class="w-full py-4 border border-primary/20 text-primary font-bold rounded-xl hover:bg-primary/5 transition-all">
-                    Print Authentication Cert.
-                </button>
-</div>
-<div class="mt-12 pt-8 border-t border-primary/10">
-<p class="text-xs font-bold uppercase tracking-widest opacity-50 mb-4">Internal Staff Notes</p>
-<div class="bg-background-light dark:bg-slate-800 p-4 rounded-lg text-sm italic border-l-4 border-primary">
-                    "Customer requested champagne upon arrival. Prepare Private Viewing Room A for collection."
-                </div>
 </div>
 </div>
 </div>
 </main>
-<nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-charcoal border-t border-primary/10 flex justify-around items-center p-4 z-50">
-<span class="material-icons text-primary">dashboard</span>
-<span class="material-icons text-white/40">inventory_2</span>
-<span class="material-icons text-white/40">shopping_bag</span>
-<span class="material-icons text-white/40">people</span>
-<span class="material-icons text-white/40">notifications</span>
-</nav>
+</div>
 
 </body></html>
