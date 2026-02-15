@@ -4,10 +4,10 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 
-class Home extends Controller
+class Collection extends Controller
 {
     public function index()
     {
-        return view('Pages/home');
+        return view('Pages/collections');
     }
 }
