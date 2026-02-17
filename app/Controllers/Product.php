@@ -2,17 +2,27 @@
 
 namespace App\Controllers;
 
+use App\Models\ProductModel;
+
 class Product extends BaseController
 {
-    public function index()
+    protected $productModel;
+
+    public function __construct()
     {
-        return view('Pages/products'); // halaman list
+        $this->productModel = new ProductModel();
     }
 
     public function detail($slug)
     {
+        $product = $this->productModel
+            ->select('products.*, collections.name as collection_name')
+            ->join('collections', 'collections.id = products.collection_id')
+            ->where('products.slug', $slug) // INI YANG PENTING
+            ->first();
+
         return view('Pages/product_detail', [
-            'slug' => $slug
+            'product' => $product
         ]);
     }
 }
