@@ -205,7 +205,10 @@
 </div>
 <div class="flex flex-col gap-2">
 <button class="w-full bg-charcoal text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-black transition-colors">ADD TO CART</button>
-<button class="w-full bg-primary text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-[#d4a929] transition-colors">RESERVE FOR PICKUP</button>
+<a href="<?= base_url('product/verdant-muse-ring') ?>" 
+   class="w-full bg-primary text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-[#d4a929] transition-colors text-center block">
+   RESERVE FOR PICKUP
+</a>
 </div>
 </div>
 <div class="group">
@@ -223,7 +226,10 @@
 </div>
 <div class="flex flex-col gap-2">
 <button class="w-full bg-charcoal text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-black transition-colors">ADD TO CART</button>
-<button class="w-full bg-primary text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-[#d4a929] transition-colors">RESERVE FOR PICKUP</button>
+<a href="<?= base_url('product/eternal-aurelian-cuff') ?>" 
+   class="w-full bg-primary text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-[#d4a929] transition-colors text-center block">
+   RESERVE FOR PICKUP
+</a>
 </div>
 </div>
 <div class="group">
@@ -238,7 +244,10 @@
 </div>
 <div class="flex flex-col gap-2">
 <button class="w-full bg-charcoal text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-black transition-colors">ADD TO CART</button>
-<button class="w-full bg-primary text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-[#d4a929] transition-colors">RESERVE FOR PICKUP</button>
+<a href="<?= base_url('product/cascade-diamond-drops') ?>" 
+   class="w-full bg-primary text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-[#d4a929] transition-colors text-center block">
+   RESERVE FOR PICKUP
+</a>
 </div>
 </div>
 <div class="group">
@@ -253,7 +262,10 @@
 </div>
 <div class="flex flex-col gap-2">
 <button class="w-full bg-charcoal text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-black transition-colors">ADD TO CART</button>
-<button class="w-full bg-primary text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-[#d4a929] transition-colors">RESERVE FOR PICKUP</button>
+<a href="<?= base_url('product/midnight-star-pendant') ?>" 
+   class="w-full bg-primary text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-[#d4a929] transition-colors text-center block">
+   RESERVE FOR PICKUP
+</a>
 </div>
 </div>
 <div class="group">
@@ -271,7 +283,10 @@
 </div>
 <div class="flex flex-col gap-2">
 <button class="w-full bg-charcoal text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-black transition-colors">ADD TO CART</button>
-<button class="w-full bg-primary text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-[#d4a929] transition-colors">RESERVE FOR PICKUP</button>
+<a href="<?= base_url('product/seraphina-rose-link') ?>" 
+   class="w-full bg-primary text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-[#d4a929] transition-colors text-center block">
+   RESERVE FOR PICKUP
+</a>
 </div>
 </div>
 </div>

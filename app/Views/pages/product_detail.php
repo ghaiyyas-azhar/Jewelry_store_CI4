@@ -2,7 +2,7 @@
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Astra Diamond Choker | Nahecididi</title>
+<title><?= $product['name'] ?> | Nahecididi</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
@@ -79,12 +79,14 @@
 <span class="mx-3">/</span>
 <a class="hover:text-primary transition-colors" href="#">Celestial Light</a>
 <span class="mx-3">/</span>
-<span class="text-charcoal font-bold">Astra Diamond Choker</span>
+<span class="text-charcoal font-bold"><?= $product['name'] ?></span>
 </nav>
 <div class="flex flex-col lg:flex-row gap-16">
 <div class="w-full lg:w-[55%]">
 <div class="relative group bg-marble-accent aspect-square overflow-hidden rounded shadow-sm">
-<img alt="Astra Diamond Choker close-up" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn1QKCpcE1NfKR3dvvYcclozLO29QRZET5ecKCwtAmHzr9O48is6LpVuFlm2SqfN_JjHpUIKIbD8twZkhZeBeMkzgLj25f0zDE7qV570kPD-3ZJrs0u0v5jUQNsI9f2dCp04ewGVu-zCM9nedwdA2pcgO2SZuALukoomA_IIDQWHnkVllCEGPolFpu__O-YBEWlrOyJ3rXTye831gGhNsCUQiJVTLtlD4v0spkMbUbb2ztajVYZ7Ea6bzMv72Zdb8QWqDla3EMmqo"/>
+<img alt="<?= $product['name'] ?>" 
+     class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+     src="<?= $product['image'] ?>"/>
 <div class="absolute bottom-6 left-6 flex space-x-2">
 <div class="w-2 h-2 rounded-full bg-primary"></div>
 <div class="w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors cursor-pointer"></div>
@@ -93,13 +95,13 @@
 </div>
 <div class="grid grid-cols-4 gap-4 mt-4">
 <div class="aspect-square bg-marble-accent cursor-pointer opacity-100 border border-primary/30">
-<img alt="Detail 1" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn1QKCpcE1NfKR3dvvYcclozLO29QRZET5ecKCwtAmHzr9O48is6LpVuFlm2SqfN_JjHpUIKIbD8twZkhZeBeMkzgLj25f0zDE7qV570kPD-3ZJrs0u0v5jUQNsI9f2dCp04ewGVu-zCM9nedwdA2pcgO2SZuALukoomA_IIDQWHnkVllCEGPolFpu__O-YBEWlrOyJ3rXTye831gGhNsCUQiJVTLtlD4v0spkMbUbb2ztajVYZ7Ea6bzMv72Zdb8QWqDla3EMmqo"/>
+<img alt="Detail 1" class="w-full h-full object-cover" src="<?= $product['image'] ?>"/>
 </div>
 <div class="aspect-square bg-marble-accent cursor-pointer opacity-60 hover:opacity-100 transition-opacity">
-<img alt="Detail 2" class="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn1QKCpcE1NfKR3dvvYcclozLO29QRZET5ecKCwtAmHzr9O48is6LpVuFlm2SqfN_JjHpUIKIbD8twZkhZeBeMkzgLj25f0zDE7qV570kPD-3ZJrs0u0v5jUQNsI9f2dCp04ewGVu-zCM9nedwdA2pcgO2SZuALukoomA_IIDQWHnkVllCEGPolFpu__O-YBEWlrOyJ3rXTye831gGhNsCUQiJVTLtlD4v0spkMbUbb2ztajVYZ7Ea6bzMv72Zdb8QWqDla3EMmqo"/>
+<img alt="Detail 2" class="w-full h-full object-cover grayscale" src="<?= $product['image'] ?>"/>
 </div>
 <div class="aspect-square bg-marble-accent cursor-pointer opacity-60 hover:opacity-100 transition-opacity">
-<img alt="Detail 3" class="w-full h-full object-cover scale-150" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn1QKCpcE1NfKR3dvvYcclozLO29QRZET5ecKCwtAmHzr9O48is6LpVuFlm2SqfN_JjHpUIKIbD8twZkhZeBeMkzgLj25f0zDE7qV570kPD-3ZJrs0u0v5jUQNsI9f2dCp04ewGVu-zCM9nedwdA2pcgO2SZuALukoomA_IIDQWHnkVllCEGPolFpu__O-YBEWlrOyJ3rXTye831gGhNsCUQiJVTLtlD4v0spkMbUbb2ztajVYZ7Ea6bzMv72Zdb8QWqDla3EMmqo"/>
+<img alt="Detail 3" class="w-full h-full object-cover scale-150" src="<?= $product['image'] ?>"/>
 </div>
 <div class="aspect-square bg-marble-accent flex items-center justify-center cursor-pointer opacity-60 hover:opacity-100 transition-opacity">
 <span class="material-symbols-outlined text-3xl">play_circle</span>
@@ -108,9 +110,13 @@
 </div>
 <div class="w-full lg:w-[45%] flex flex-col">
 <div class="border-b border-gray-100 pb-8">
-<p class="text-[11px] uppercase tracking-[0.4em] text-primary font-bold mb-4">Celestial Light Collection</p>
-<h1 class="text-4xl lg:text-5xl font-light tracking-tight text-charcoal mb-4">Astra Diamond Choker</h1>
-<p class="text-2xl font-light text-charcoal">$32,400</p>
+<p class="text-[11px] uppercase tracking-[0.4em] text-primary font-bold mb-4"><?= $product['collection_name'] ?> Collection</p>
+<h1 class="text-4xl lg:text-5xl font-light tracking-tight text-charcoal mb-4">
+    <?= $product['name'] ?>
+</h1>
+<p class="text-2xl font-light text-charcoal">
+    $<?= number_format($product['price']) ?>
+</p>
 </div>
 <div class="py-8 space-y-6">
 <div>
@@ -118,7 +124,7 @@
 <ul class="text-sm text-gray-600 space-y-2 leading-relaxed">
 <li class="flex justify-between border-b border-gray-50 py-2">
 <span>Material</span>
-<span class="text-charcoal font-medium">18k White Gold</span>
+<span class="text-charcoal font-medium"><?= $product['material'] ?></span>
 </li>
 <li class="flex justify-between border-b border-gray-50 py-2">
 <span>Gemstones</span>
