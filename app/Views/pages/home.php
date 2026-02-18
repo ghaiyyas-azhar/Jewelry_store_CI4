@@ -1,86 +1,21 @@
-<!DOCTYPE html>
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Nahecididi | Luxury Jewelry &amp; Private Viewings</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#D4AF37","champagne": "#F7E7CE",
-                        "marble": "#FDFDFD",
-                        "background-light": "#FDFDFD",
-                        "background-dark": "#121212",
-                    },
-                    fontFamily: {
-                        "display": ["Manrope", "sans-serif"],
-                        "serif": ["Playfair Display", "serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0px",
-                        "lg": "2px",
-                        "xl": "4px",
-                        "full": "9999px"
-                    },
-                },
-            },
-        }
-    </script>
-<style type="text/tailwindcss">
-        .glass-effect {
-            background: rgba(253, 253, 253, 0.9);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-        }
-        .hero-overlay {
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1), rgba(253, 253, 253, 0));
-        }
-        .logo-tracking {
-            letter-spacing: 0.15em;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
-        }
-    </style>
-</head>
-<body class="bg-marble dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
-<header class="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-primary/20">
-<nav class="max-w-[1440px] mx-auto px-10 h-24 flex items-center justify-between">
-<div class="flex items-center space-x-10">
-<a class="text-[10px] tracking-[0.4em] uppercase font-medium hover:text-primary transition-colors"
-   href="<?= base_url('collections') ?>">
-   Collections
-</a>
-<a class="text-[10px] tracking-[0.4em] uppercase font-medium hover:text-primary transition-colors" href="#">Bespoke</a>
-</div>
-<div class="absolute left-1/2 -translate-x-1/2 text-center">
-<a class="block" href="/">
-<h1 class="font-serif text-4xl logo-tracking font-medium text-slate-900">NAHECIDIDI</h1>
-<span class="block text-[8px] tracking-[0.6em] uppercase mt-1 opacity-60">Fine Jewelry</span>
-</a>
-</div>
-<div class="flex items-center space-x-8">
-<a class="text-[10px] tracking-[0.4em] uppercase font-medium hover:text-primary transition-colors hidden md:block" href="#">Boutiques</a>
-<div class="flex items-center space-x-5">
-<button class="hover:text-primary transition-colors">
-<span class="material-symbols-outlined !text-xl">search</span>
-</button>
-<button class="hover:text-primary transition-colors">
-<span class="material-symbols-outlined !text-xl">favorite</span>
-</button>
-<button class="hover:text-primary transition-colors">
-<span class="material-symbols-outlined !text-xl">shopping_bag</span>
-</button>
-</div>
-</div>
-</nav>
-</header>
+<?php $title = "Nahecididi | Luxury Jewelry & Private Viewings"; ?>
+<?= $this->include('layout/header'); ?>
+
+<script>
+function toggleUserDropdown() {
+    const dropdown = document.getElementById("userDropdown");
+    dropdown.classList.toggle("hidden");
+}
+
+// klik luar dropdown → close
+window.addEventListener("click", function(e) {
+    const dropdown = document.getElementById("userDropdown");
+    if (!e.target.closest(".relative")) {
+        dropdown.classList.add("hidden");
+    }
+});
+</script>
+
 <main>
 <section class="relative h-screen min-h-[850px] flex items-center justify-center overflow-hidden">
 <div class="absolute inset-0">
@@ -227,60 +162,5 @@ Subscribe
 </div>
 </section>
 </main>
-<footer class="bg-marble py-24">
-<div class="max-w-[1440px] mx-auto px-10">
-<div class="text-center mb-20">
-<h2 class="font-serif text-3xl logo-tracking font-medium text-slate-900">NAHECIDIDI</h2>
-<div class="h-px w-20 bg-primary/30 mx-auto mt-6"></div>
-</div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-16 mb-24">
-<div>
-<h4 class="text-[10px] tracking-[0.4em] uppercase font-bold text-slate-900 mb-8 border-b border-primary/20 pb-2 inline-block">Collections</h4>
-<ul class="space-y-4 text-[11px] tracking-widest text-slate-500 uppercase font-medium">
-<li><a class="hover:text-primary transition-colors" href="#">High Jewelry</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Engagement</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Timepieces</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">The Archives</a></li>
-</ul>
-</div>
-<div>
-<h4 class="text-[10px] tracking-[0.4em] uppercase font-bold text-slate-900 mb-8 border-b border-primary/20 pb-2 inline-block">Services</h4>
-<ul class="space-y-4 text-[11px] tracking-widest text-slate-500 uppercase font-medium">
-<li><a class="hover:text-primary transition-colors" href="#">BOPIS Experience</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Book an Appointment</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Valuations</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Care Guide</a></li>
-</ul>
-</div>
-<div>
-<h4 class="text-[10px] tracking-[0.4em] uppercase font-bold text-slate-900 mb-8 border-b border-primary/20 pb-2 inline-block">The House</h4>
-<ul class="space-y-4 text-[11px] tracking-widest text-slate-500 uppercase font-medium">
-<li><a class="hover:text-primary transition-colors" href="#">Our Story</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Sustainability</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Press</a></li>
-</ul>
-</div>
-<div>
-<h4 class="text-[10px] tracking-[0.4em] uppercase font-bold text-slate-900 mb-8 border-b border-primary/20 pb-2 inline-block">Contact</h4>
-<ul class="space-y-4 text-[11px] tracking-widest text-slate-500 uppercase font-medium">
-<li><a class="hover:text-primary transition-colors" href="#">concierge@nahecididi.com</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">+1 800 NAHECIDIDI</a></li>
-<li class="flex space-x-6 pt-6">
-<a class="hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined !text-lg">share</span></a>
-<a class="hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined !text-lg">language</span></a>
-</li>
-</ul>
-</div>
-</div>
-<div class="flex flex-col md:flex-row justify-between items-center pt-10 border-t border-slate-100">
-<p class="text-[9px] tracking-[0.4em] text-slate-400 uppercase">© 2024 Nahecididi Maison. All Rights Reserved.</p>
-<div class="flex space-x-10 mt-6 md:mt-0">
-<a class="text-[9px] tracking-[0.4em] text-slate-400 uppercase hover:text-primary" href="#">Privacy Policy</a>
-<a class="text-[9px] tracking-[0.4em] text-slate-400 uppercase hover:text-primary" href="#">Terms of Service</a>
-</div>
-</div>
-</div>
-</footer>
 
-</body></html>
+<?= $this->include('layout/footer'); ?>
