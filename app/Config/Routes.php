@@ -17,6 +17,16 @@ $routes->get('/product/(:segment)', 'Product::detail/$1'); // detail
 $routes->get('/pickup', 'Pickup::index');
 $routes->get('/success', 'Success::index');
 
+// LOGIN UNTUK USER
+$routes->get('/login', 'Auth::login');
+$routes->post('/loginProcess', 'Auth::loginProcess');
+
+$routes->get('/register', 'Auth::register');
+$routes->post('/registerProcess', 'Auth::registerProcess');
+
+$routes->get('/logout', 'Auth::logout');
+
+
 
 // ================= ADMIN AREA =================
 $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($routes) {
