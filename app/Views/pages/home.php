@@ -1,20 +1,8 @@
 <?php $title = "Nahecididi | Luxury Jewelry & Private Viewings"; ?>
 <?= $this->include('layout/header'); ?>
 
-<script>
-function toggleUserDropdown() {
-    const dropdown = document.getElementById("userDropdown");
-    dropdown.classList.toggle("hidden");
-}
+<script src="<?= base_url('assets/js/app.js') ?>"></script>
 
-// klik luar dropdown → close
-window.addEventListener("click", function(e) {
-    const dropdown = document.getElementById("userDropdown");
-    if (!e.target.closest(".relative")) {
-        dropdown.classList.add("hidden");
-    }
-});
-</script>
 
 <main>
 <section class="relative h-screen min-h-[850px] flex items-center justify-center overflow-hidden">

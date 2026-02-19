@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
 
 <script>
 tailwind.config = {
@@ -87,25 +88,35 @@ tailwind.config = {
 </button>
 
 <!-- USER DROPDOWN -->
-<div class="relative">
-<button onclick="toggleUserDropdown()" class="hover:text-primary transition-colors">
-<span class="material-symbols-outlined !text-xl">person</span>
-</button>
+<div class="user-menu">
 
-<div id="userDropdown"
-     class="hidden absolute right-0 mt-4 w-44 bg-white dark:bg-background-dark shadow-xl border border-primary/20 text-[11px] tracking-wider uppercase">
+    <?php if(session()->get('isLoggedIn')): ?>
 
-<a href="<?= base_url('login') ?>"
-   class="block px-5 py-3 hover:bg-primary/10 transition-colors">
-   Login
-</a>
+        <div class="dropdown">
+            <button id="userBtn" class="dropbtn">
+                <?= session()->get('name'); ?>
+            </button>
 
-<a href="<?= base_url('register') ?>"
-   class="block px-5 py-3 hover:bg-primary/10 transition-colors">
-   Register
-</a>
+            <div id="userDropdown" class="dropdown-content">
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
 
-</div>
+    <?php else: ?>
+
+        <div class="dropdown">
+            <button id="userBtn" class="dropbtn">
+                <i class="fa fa-user"></i> Account
+            </button>
+
+            <div id="userDropdown" class="dropdown-content">
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+            </div>
+        </div>
+
+    <?php endif; ?>
+
 </div>
 <!-- END USER DROPDOWN -->
 

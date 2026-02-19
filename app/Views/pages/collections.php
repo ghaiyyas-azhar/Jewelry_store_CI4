@@ -1,86 +1,10 @@
-<!DOCTYPE html>
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Nahecididi Updated Collection List</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#e8ba30",
-                        "background-light": "#fcfcfc",
-                        "background-dark": "#211d11",
-                        "charcoal": "#333333",
-                        "marble-accent": "#f1f0ee"
-                    },
-                    fontFamily: {
-                        "display": ["Noto Serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                },
-            },
-        }
-    </script>
-<style type="text/tailwindcss">
-        body {
-            font-family: 'Noto Serif', serif;
-        }
-        .marble-bg {
-            background-color: #fcfcfc;
-            background-image: radial-gradient(circle at 20% 20%, rgba(232, 186, 48, 0.03) 0%, transparent 50%),
-                              radial-gradient(circle at 80% 80%, rgba(232, 186, 48, 0.02) 0%, transparent 50%);
-        }
-        .line-clamp-2 {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-    </style>
-</head>
-<body class="bg-background-light dark:bg-background-dark text-charcoal dark:text-gray-100 font-display min-h-screen marble-bg">
-<header class="border-b border-primary/20 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
-<div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
-<div class="flex items-center space-x-8">
-<a class="text-2xl font-bold tracking-widest text-primary uppercase" href="#">Nahecididi</a>
-<nav class="hidden md:flex space-x-6 text-sm font-medium tracking-tight">
-<a class="hover:text-primary transition-colors" href="#">NEW ARRIVALS</a>
-<a class="hover:text-primary transition-colors" href="#">COLLECTIONS</a>
-<a class="hover:text-primary transition-colors" href="#">GIFTS</a>
-<a class="hover:text-primary transition-colors" href="#">THE WORLD OF NAHECIDIDI</a>
-</nav>
-</div>
-<div class="flex items-center space-x-6">
-<button class="hover:text-primary transition-colors"><span class="material-icons">search</span></button>
-<button class="hover:text-primary transition-colors"><span class="material-icons">favorite_border</span></button>
-<button class="hover:text-primary transition-colors flex items-center">
-<span class="material-icons">shopping_bag</span>
-<span class="ml-1 text-xs">(0)</span>
-</button>
-</div>
-</div>
-<div class="bg-primary text-white overflow-x-auto">
-<div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-center space-x-12 whitespace-nowrap text-sm font-medium tracking-widest uppercase">
-<a class="border-b border-white pb-1" href="#">All Collections</a>
-<a class="opacity-80 hover:opacity-100 transition-opacity" href="#">Gilded Age</a>
-<a class="opacity-80 hover:opacity-100 transition-opacity" href="#">Emerald Dreams</a>
-<a class="opacity-80 hover:opacity-100 transition-opacity" href="#">Celestial Light</a>
-<a class="opacity-80 hover:opacity-100 transition-opacity" href="#">Heirloom Radiance</a>
-<a class="opacity-80 hover:opacity-100 transition-opacity" href="#">Midnight Diamond</a>
-</div>
-</div>
-</header>
+<?php $title = "Nahecididi | Luxury Jewelry & Private Viewings"; ?>
+<?= $this->include('layout/header'); ?>
+
+<script src="<?= base_url('assets/js/app.js') ?>"></script>
+
+<script src="<?= base_url('assets/js/product.js') ?>"></script>
+
 <main class="max-w-7xl mx-auto px-4 py-12">
 <div class="flex flex-col md:flex-row gap-12">
 <aside class="w-full md:w-64 flex-shrink-0">
@@ -139,7 +63,7 @@
 <option>London - Bond Street</option>
 <option>Dubai - Mall of the Emirates</option>
 </select>
-<span class="material-icons absolute right-3 top-2 text-primary pointer-events-none">expand_more</span>
+<span class="material-symbols-outlined absolute right-3 top-2 text-primary pointer-events-none">expand_more</span>
 </div>
 <p class="mt-3 text-[10px] text-gray-500 italic">Showing availability for Fifth Avenue Flagship</p>
 </div>
@@ -185,7 +109,10 @@
 <p class="text-lg font-semibold pt-2 text-charcoal dark:text-gray-100">$32,400</p>
 </div>
 <div class="flex flex-col gap-2">
-<button class="w-full bg-charcoal text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-black transition-colors">ADD TO CART</button>
+<button class="w-full bg-black text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-gray-900 transition-colors">
+ADD TO CART
+</button>
+
 <a href="<?= base_url('product/astra-diamond-choker') ?>" 
    class="w-full bg-primary text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-[#d4a929] transition-colors text-center block">
    RESERVE FOR PICKUP
@@ -204,7 +131,10 @@
 <p class="text-lg font-semibold pt-2 text-charcoal dark:text-gray-100">$18,900</p>
 </div>
 <div class="flex flex-col gap-2">
-<button class="w-full bg-charcoal text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-black transition-colors">ADD TO CART</button>
+<button class="w-full bg-black text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-gray-900 transition-colors">
+ADD TO CART
+</button>
+
 <a href="<?= base_url('product/verdant-muse-ring') ?>" 
    class="w-full bg-primary text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-[#d4a929] transition-colors text-center block">
    RESERVE FOR PICKUP
@@ -225,7 +155,10 @@
 <p class="text-lg font-semibold pt-2 text-charcoal dark:text-gray-100">$8,250</p>
 </div>
 <div class="flex flex-col gap-2">
-<button class="w-full bg-charcoal text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-black transition-colors">ADD TO CART</button>
+<button class="w-full bg-black text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-gray-900 transition-colors">
+ADD TO CART
+</button>
+
 <a href="<?= base_url('product/eternal-aurelian-cuff') ?>" 
    class="w-full bg-primary text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-[#d4a929] transition-colors text-center block">
    RESERVE FOR PICKUP
@@ -243,7 +176,10 @@
 <p class="text-lg font-semibold pt-2 text-charcoal dark:text-gray-100">$12,400</p>
 </div>
 <div class="flex flex-col gap-2">
-<button class="w-full bg-charcoal text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-black transition-colors">ADD TO CART</button>
+<button class="w-full bg-black text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-gray-900 transition-colors">
+ADD TO CART
+</button>
+
 <a href="<?= base_url('product/cascade-diamond-drops') ?>" 
    class="w-full bg-primary text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-[#d4a929] transition-colors text-center block">
    RESERVE FOR PICKUP
@@ -261,7 +197,10 @@
 <p class="text-lg font-semibold pt-2 text-charcoal dark:text-gray-100">$15,600</p>
 </div>
 <div class="flex flex-col gap-2">
-<button class="w-full bg-charcoal text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-black transition-colors">ADD TO CART</button>
+<button class="w-full bg-black text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-gray-900 transition-colors">
+ADD TO CART
+</button>
+
 <a href="<?= base_url('product/midnight-star-pendant') ?>" 
    class="w-full bg-primary text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-[#d4a929] transition-colors text-center block">
    RESERVE FOR PICKUP
@@ -282,7 +221,10 @@
 <p class="text-lg font-semibold pt-2 text-charcoal dark:text-gray-100">$6,450</p>
 </div>
 <div class="flex flex-col gap-2">
-<button class="w-full bg-charcoal text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-black transition-colors">ADD TO CART</button>
+<button class="w-full bg-black text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-gray-900 transition-colors">
+ADD TO CART
+</button>
+
 <a href="<?= base_url('product/seraphina-rose-link') ?>" 
    class="w-full bg-primary text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-[#d4a929] transition-colors text-center block">
    RESERVE FOR PICKUP
@@ -292,7 +234,7 @@
 </div>
 <div class="mt-20 flex items-center justify-center space-x-4">
 <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:border-primary hover:text-primary transition-colors">
-<span class="material-icons">chevron_left</span>
+<span class="material-symbols-outlined">chevron_left</span>
 </button>
 <div class="flex space-x-2 text-sm">
 <button class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white font-bold">1</button>
@@ -302,58 +244,12 @@
 <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">12</button>
 </div>
 <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:border-primary hover:text-primary transition-colors">
-<span class="material-icons">chevron_right</span>
+<span class="material-symbols-outlined">chevron_right</span>
 </button>
 </div>
 </div>
 </div>
 </main>
-<footer class="mt-24 bg-white dark:bg-background-dark border-t border-primary/20 pt-16 pb-8">
-<div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-<div class="space-y-6">
-<h2 class="text-xl font-bold tracking-widest text-primary uppercase">Nahecididi</h2>
-<p class="text-sm text-gray-500 leading-relaxed italic">Crafting timeless elegance and bespoke luxury since 1924. Every piece is a testament to the pursuit of perfection.</p>
-<div class="flex space-x-4">
-<a class="text-primary" href="#"><span class="material-icons">facebook</span></a>
-<a class="text-primary" href="#"><span class="material-icons">camera_alt</span></a>
-<a class="text-primary" href="#"><span class="material-icons">alternate_email</span></a>
-</div>
-</div>
-<div>
-<h4 class="text-xs font-bold uppercase tracking-widest mb-6">Services</h4>
-<ul class="space-y-4 text-sm text-gray-500">
-<li><a class="hover:text-primary transition-colors" href="#">Book an Appointment</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Jewelry Care &amp; Repair</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Shipping &amp; Returns</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Gift Cards</a></li>
-</ul>
-</div>
-<div>
-<h4 class="text-xs font-bold uppercase tracking-widest mb-6">Company</h4>
-<ul class="space-y-4 text-sm text-gray-500">
-<li><a class="hover:text-primary transition-colors" href="#">Our Heritage</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Sustainability</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Store Locator</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
-</ul>
-</div>
-<div>
-<h4 class="text-xs font-bold uppercase tracking-widest mb-6">Newsletter</h4>
-<p class="text-sm text-gray-500 mb-4">Be the first to see our new collections.</p>
-<div class="flex">
-<input class="bg-gray-50 dark:bg-background-dark/50 border border-gray-200 rounded-l px-4 py-2 text-sm w-full focus:ring-1 focus:ring-primary focus:border-primary outline-none" placeholder="Email Address" type="email"/>
-<button class="bg-primary text-white px-4 py-2 rounded-r text-xs font-bold uppercase tracking-widest">Join</button>
-</div>
-</div>
-</div>
-<div class="max-w-7xl mx-auto px-4 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-[10px] text-gray-400 uppercase tracking-widest">
-<p>© 2024 Nahecididi Fine Jewelry. All Rights Reserved.</p>
-<div class="flex space-x-6">
-<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
-<a class="hover:text-primary transition-colors" href="#">Terms of Use</a>
-<a class="hover:text-primary transition-colors" href="#">Accessibility</a>
-</div>
-</div>
-</footer>
 
-</body></html>
+<?= $this->include('layout/footer'); ?>
+
