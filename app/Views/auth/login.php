@@ -126,9 +126,9 @@ body {
 <body>
 
 <div class="login-box">
-    <a href="/login" class="btn-back">←</a>
+    <a href="/" class="btn-back">←</a>
     <h2 style="margin-bottom:30px; font-weight:300;">LOGIN</h2>
-        <form action="<?= base_url('auth/loginProcess') ?>" method="post">
+        <form action="<?= base_url('login') ?>" method="post">
         <input type="email" name="email" placeholder="Email" required>
         <input type="password" name="password" placeholder="Password" required>
         <button type="submit" class="btn-gold">LOGIN</button>
