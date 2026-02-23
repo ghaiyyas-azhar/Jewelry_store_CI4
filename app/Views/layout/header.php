@@ -105,9 +105,12 @@ tailwind.config = {
     <?php else: ?>
 
         <div class="dropdown">
-            <button id="userBtn" class="dropbtn">
-                <i class="fa fa-user"></i> Account
+            <button id="userBtn" class="dropbtn hover:text-primary transition-colors">
+                <span class="material-symbols-outlined !text-xl">
+                    account_circle
+                </span>
             </button>
+        </div>
 
             <div id="userDropdown" class="dropdown-content">
                 <a href="/login">Login</a>
