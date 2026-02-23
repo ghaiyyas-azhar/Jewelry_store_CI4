@@ -4,64 +4,111 @@ namespace App\Controllers;
 
 class Auth extends BaseController
 {
-    // Tampilkan halaman login
+    // ================= LOGIN =================
+
     public function login()
     {
+        // Jika sudah login, redirect ke homepage
+        if (session()->get('logged_in')) {
+            return redirect()->to('/');
+        }
+
         return view('auth/login');
     }
 
-    // Proses login
     public function loginProcess()
     {
-        $email = $this->request->getPost('email');
+        $email = trim($this->request->getPost('email'));
         $password = $this->request->getPost('password');
 
-        $db = \Config\Database::connect();
-        $builder = $db->table('users');
-
-        $user = $builder->where('email', $email)->get()->getRow();
-
-        if ($user) {
-            if (password_verify($password, $user->password)) {
-
-                // simpan session
-                session()->set([
-                    'user_id' => $user->id,
-                    'name'    => $user->name,
-                    'email'   => $user->email,
-                    'logged_in' => true
-                ]);
-
-                return redirect()->to('/'); // ke homepage
-            } else {
-                return redirect()->back()->with('error', 'Password salah');
-            }
-        } else {
-            return redirect()->back()->with('error', 'Email tidak ditemukan');
+        if (!$email || !$password) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Email dan Password wajib diisi');
         }
+
+        $db = \Config\Database::connect();
+        $user = $db->table('users')
+                   ->where('email', $email)
+                   ->get()
+                   ->getRow();
+
+        if (!$user) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Email tidak ditemukan');
+        }
+
+        if (!password_verify($password, $user->password)) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Password salah');
+        }
+
+        session()->regenerate();
+
+        session()->set([
+            'user_id'   => $user->id,
+            'name'      => $user->name,
+            'email'     => $user->email,
+            'logged_in' => true
+        ]);
+
+        return redirect()->to('/');
     }
 
-    // Register tetap seperti sebelumnya
+    // ================= REGISTER =================
+
     public function register()
     {
+        if (session()->get('logged_in')) {
+            return redirect()->to('/');
+        }
+
         return view('auth/register');
     }
 
     public function registerProcess()
     {
-        $name = $this->request->getPost('name');
-        $email = $this->request->getPost('email');
-        $password = password_hash($this->request->getPost('password'), PASSWORD_DEFAULT);
+        $name = trim($this->request->getPost('name'));
+        $email = trim($this->request->getPost('email'));
+        $passwordInput = $this->request->getPost('password');
+
+        if (!$name || !$email || !$passwordInput) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Semua field wajib diisi');
+        }
 
         $db = \Config\Database::connect();
         $builder = $db->table('users');
 
+        // Cek email sudah ada atau belum
+        $existingUser = $builder->where('email', $email)->get()->getRow();
+
+        if ($existingUser) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Email sudah terdaftar');
+        }
+
+        $password = password_hash($passwordInput, PASSWORD_DEFAULT);
+
         $builder->insert([
-            'name' => $name,
-            'email' => $email,
+            'name'     => $name,
+            'email'    => $email,
             'password' => $password
         ]);
 
-        return redirect()->to('/auth/login');
+        return redirect()->to('/login')
+                         ->with('success', 'Registrasi berhasil. Silakan login.');
+    }
+
+    // ================= LOGOUT =================
+
+    public function logout()
+    {
+        session()->destroy();
+        return redirect()->to('/');
     }
 }

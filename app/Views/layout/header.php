@@ -88,37 +88,67 @@ tailwind.config = {
 </button>
 
 <!-- USER DROPDOWN -->
-<div class="user-menu">
+<div class="relative">
 
-    <?php if(session()->get('isLoggedIn')): ?>
+<?php if(session()->get('logged_in')): ?>
 
-        <div class="dropdown">
-            <button id="userBtn" class="dropbtn">
-                <?= session()->get('name'); ?>
-            </button>
+    <!-- Jika Sudah Login -->
+    <button id="userBtn" class="hover:text-primary transition-colors flex items-center">
+        <span class="material-symbols-outlined !text-xl">
+            account_circle
+        </span>
+    </button>
 
-            <div id="userDropdown" class="dropdown-content">
-                <a href="/logout">Logout</a>
-            </div>
-        </div>
+    <div id="userDropdown" 
+         class="hidden absolute right-0 mt-4 w-56 bg-white shadow-xl border border-primary/20">
 
-    <?php else: ?>
+        <a href="<?= base_url('profile') ?>" 
+           class="block px-6 py-3 text-sm hover:bg-gray-100">
+           Profile
+        </a>
 
-        <div class="dropdown">
-            <button id="userBtn" class="dropbtn hover:text-primary transition-colors">
-                <span class="material-symbols-outlined !text-xl">
-                    account_circle
-                </span>
-            </button>
-        </div>
+        <a href="<?= base_url('payment-method') ?>" 
+           class="block px-6 py-3 text-sm hover:bg-gray-100">
+           Payment Method
+        </a>
 
-            <div id="userDropdown" class="dropdown-content">
-                <a href="/login">Login</a>
-                <a href="/register">Register</a>
-            </div>
-        </div>
+        <a href="<?= base_url('purchase-history') ?>" 
+           class="block px-6 py-3 text-sm hover:bg-gray-100">
+           History Pembelian
+        </a>
 
-    <?php endif; ?>
+        <div class="border-t"></div>
+
+        <a href="<?= base_url('logout') ?>" 
+           class="block px-6 py-3 text-sm text-red-500 hover:bg-gray-100">
+           Logout
+        </a>
+    </div>
+
+<?php else: ?>
+
+    <!-- Jika Belum Login -->
+    <button id="userBtn" class="hover:text-primary transition-colors">
+        <span class="material-symbols-outlined !text-xl">
+            account_circle
+        </span>
+    </button>
+
+    <div id="userDropdown" 
+         class="hidden absolute right-0 mt-4 w-40 bg-white shadow-xl border border-primary/20">
+
+        <a href="<?= base_url('login') ?>" 
+           class="block px-6 py-3 text-sm hover:bg-gray-100">
+           Login
+        </a>
+
+        <a href="<?= base_url('register') ?>" 
+           class="block px-6 py-3 text-sm hover:bg-gray-100">
+           Register
+        </a>
+    </div>
+
+<?php endif; ?>
 
 </div>
 <!-- END USER DROPDOWN -->

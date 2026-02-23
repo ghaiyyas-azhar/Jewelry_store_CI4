@@ -5,30 +5,46 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+
+// ================= PUBLIC =================
+
 $routes->get('/', 'Home::index');
 
-$routes->get('/collections', 'Collection::index');
+$routes->get('collections', 'Collection::index');
 
 // PRODUCT
-$routes->get('/products', 'Product::index'); // list
-$routes->get('/product/(:segment)', 'Product::detail/$1'); // detail
+$routes->get('products', 'Product::index');
+$routes->get('product/(:segment)', 'Product::detail/$1');
 
 // PICKUP CUSTOMER
-$routes->get('/pickup', 'Pickup::index');
-$routes->get('/success', 'Success::index');
+$routes->get('pickup', 'Pickup::index');
+$routes->get('success', 'Success::index');
 
-// LOGIN UNTUK USER
-$routes->get('/login', 'Auth::login');
-$routes->post('/loginProcess', 'Auth::loginProcess');
 
-$routes->get('/register', 'Auth::register');
-$routes->post('auth/registerProcess', 'Auth::registerProcess');
+// ================= AUTH =================
 
-$routes->get('/logout', 'Auth::logout');
+$routes->get('login', 'Auth::login');
+$routes->post('login', 'Auth::loginProcess');
 
+$routes->get('register', 'Auth::register');
+$routes->post('register', 'Auth::registerProcess');
+
+$routes->get('logout', 'Auth::logout');
+
+// ================= USER AREA =================
+
+$routes->group('', function($routes) {
+
+    $routes->get('profile', 'User::profile');
+    $routes->get('payment-method', 'User::paymentMethod');
+    $routes->get('purchases', 'User::purchases');
+    $routes->get('purchase-history', 'User::purchaseHistory');
+
+});
 
 
 // ================= ADMIN AREA =================
+
 $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($routes) {
 
     $routes->get('/', 'Dashboard::index');
@@ -42,4 +58,5 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($rout
     $routes->post('pickups/approve/(:num)', 'PickupController::approve/$1');
     $routes->post('pickups/decline/(:num)', 'PickupController::decline/$1');
     $routes->post('pickups/collected/(:num)', 'PickupController::markCollected/$1');
+
 });

@@ -7,11 +7,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
         userBtn.addEventListener("click", function(e) {
             e.stopPropagation();
-            dropdown.classList.toggle("show");
+            dropdown.classList.toggle("hidden");
         });
 
         window.addEventListener("click", function() {
-            dropdown.classList.remove("show");
+            dropdown.classList.add("hidden");
         });
 
     }
