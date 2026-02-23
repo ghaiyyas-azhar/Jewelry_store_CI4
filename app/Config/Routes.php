@@ -22,7 +22,7 @@ $routes->get('/login', 'Auth::login');
 $routes->post('/loginProcess', 'Auth::loginProcess');
 
 $routes->get('/register', 'Auth::register');
-$routes->post('/registerProcess', 'Auth::registerProcess');
+$routes->post('auth/registerProcess', 'Auth::registerProcess');
 
 $routes->get('/logout', 'Auth::logout');
 
