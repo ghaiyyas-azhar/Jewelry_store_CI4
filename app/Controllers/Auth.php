@@ -8,13 +8,8 @@ class Auth extends BaseController
 
     public function login()
     {
+        // Jika sudah login, redirect ke homepage
         if (session()->get('logged_in')) {
-            
-            // Jika sudah login, redirect sesuai role
-            if (session()->get('role') === 'admin') {
-                return redirect()->to('/admin');
-            }
-
             return redirect()->to('/');
         }
 
@@ -22,51 +17,43 @@ class Auth extends BaseController
     }
 
     public function loginProcess()
-    {
-        $email = trim($this->request->getPost('email'));
-        $password = $this->request->getPost('password');
+{
+    $email = $this->request->getPost('email');
+    $password = $this->request->getPost('password');
 
-        if (!$email || !$password) {
-            return redirect()->back()
-                ->withInput()
-                ->with('error', 'Email dan Password wajib diisi');
-        }
+    $userModel = new \App\Models\UserModel();
 
-        $db = \Config\Database::connect();
-        $user = $db->table('users')
-                   ->where('email', $email)
-                   ->get()
-                   ->getRow();
+    $user = $userModel->where('email', $email)->first();
 
-        if (!$user) {
-            return redirect()->back()
-                ->withInput()
-                ->with('error', 'Email tidak ditemukan');
-        }
+    if (!$user) {
+        return redirect()->back()->with('error', 'Email not registered');
+    }
 
-        if (!password_verify($password, $user->password)) {
-            return redirect()->back()
-                ->withInput()
-                ->with('error', 'Password salah');
-        }
+    if (!password_verify($password, $user['password'])) {
+        return redirect()->back()->with('error', 'Incorrect password');
+    }
 
-        session()->regenerate();
+    // 🔥 CHECK SUSPEND
+    if (isset($user['status']) && $user['status'] === 'suspended') {
+        return redirect()->back()->with('error', 'Your account has been suspended.');
+    }
 
-        session()->set([
-            'user_id'   => $user->id,
-            'name'      => $user->name,
-            'email'     => $user->email,
-            'role'      => $user->role, // tambah role
-            'logged_in' => true
-        ]);
+    // SET SESSION
+    session()->set([
+        'user_id' => $user['id'],
+        'name'    => $user['name'],
+        'email'   => $user['email'],
+        'role'    => $user['role'],
+        'logged_in' => true
+    ]);
 
-        // Redirect berdasarkan role
-        if ($user->role === 'admin') {
-            return redirect()->to('/admin');
-        }
-
+    // ROLE REDIRECT
+    if ($user['role'] === 'admin') {
+        return redirect()->to('/admin');
+    } else {
         return redirect()->to('/');
     }
+}
 
     // ================= REGISTER =================
 
@@ -94,6 +81,7 @@ class Auth extends BaseController
         $db = \Config\Database::connect();
         $builder = $db->table('users');
 
+        // Cek email sudah ada atau belum
         $existingUser = $builder->where('email', $email)->get()->getRow();
 
         if ($existingUser) {
@@ -107,8 +95,7 @@ class Auth extends BaseController
         $builder->insert([
             'name'     => $name,
             'email'    => $email,
-            'password' => $password,
-            'role'     => 'user' // default role
+            'password' => $password
         ]);
 
         return redirect()->to('/login')
