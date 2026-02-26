@@ -48,6 +48,11 @@ class CreateProductsTable extends Migration
                 'type' => 'DATETIME',
                 'null' => true,
             ],
+            'stock' => [
+                'type' => 'INT',
+                'constraint' => 11,
+                'default' => 0,
+            ],
         ]);
 
         $this->forge->addKey('id', true);

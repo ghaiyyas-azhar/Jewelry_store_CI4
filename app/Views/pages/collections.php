@@ -252,4 +252,3 @@ ADD TO CART
 </main>
 
 <?= $this->include('layout/footer'); ?>
-
