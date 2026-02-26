@@ -4,24 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ProductModel extends Model
+class BoutiqueModel extends Model
 {
-    protected $table            = 'products';
+    protected $table            = 'boutiques';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields = [
-    'collection_id',
-    'name',
-    'slug',
-    'price',
-    'material',
-    'description',
-    'image',
-    'stock'
-];
+    protected $allowedFields    = [];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

@@ -15,7 +15,7 @@ class CreatePickupAppointments extends Migration
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
-            'product_id' => [
+            'order_id' => [
                 'type' => 'INT',
                 'constraint' => 11,
                 'unsigned' => true,
@@ -28,6 +28,11 @@ class CreatePickupAppointments extends Migration
             'appointment_date' => [
                 'type' => 'DATETIME',
             ],
+            'status' => [
+                'type' => 'ENUM',
+                'constraint' => ['scheduled','picked_up','cancelled'],
+                'default' => 'scheduled'
+            ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,
@@ -35,10 +40,8 @@ class CreatePickupAppointments extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->addKey('product_id');
-        $this->forge->addKey('boutique_id');
 
-        $this->forge->addForeignKey('product_id', 'products', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('order_id', 'orders', 'id', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('boutique_id', 'boutiques', 'id', 'CASCADE', 'CASCADE');
 
         $this->forge->createTable('pickup_appointments');

@@ -53,6 +53,24 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($rout
     $routes->get('pickups', 'PickupController::index');
     $routes->get('appointments', 'AppointmentController::index');
     $routes->get('clients', 'ClientController::index');
+    
+
+    // COLLECTION CRUD
+    $routes->get('collections', 'CollectionController::index');
+    $routes->get('collections/create', 'CollectionController::create');
+    $routes->post('collections/store', 'CollectionController::store');
+    $routes->get('collections/edit/(:num)', 'CollectionController::edit/$1');
+    $routes->post('collections/update/(:num)', 'CollectionController::update/$1');
+    $routes->get('collections/delete/(:num)', 'CollectionController::delete/$1');
+
+    // INVENTORY CRUD
+    $routes->get('inventory', 'Inventory::index');
+$routes->get('inventory/create', 'Inventory::create');
+$routes->post('inventory/store', 'Inventory::store');
+
+$routes->get('inventory/edit/(:num)', 'Inventory::edit/$1');
+$routes->post('inventory/update/(:num)', 'Inventory::update/$1');
+$routes->get('inventory/delete/(:num)', 'Inventory::delete/$1');
 
     // ACTION BUTTONS
     $routes->post('pickups/approve/(:num)', 'PickupController::approve/$1');
