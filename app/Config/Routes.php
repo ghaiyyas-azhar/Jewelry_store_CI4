@@ -10,6 +10,7 @@ use CodeIgniter\Router\RouteCollection;
 
 $routes->get('/', 'Home::index');
 
+$routes->get('home', 'Home::index');
 $routes->get('collections', 'Collection::index');
 
 // PRODUCT
@@ -45,7 +46,10 @@ $routes->group('', function($routes) {
 
 // ================= ADMIN AREA =================
 
-$routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($routes) {
+$routes->group('admin', [
+        'namespace' => 'App\Controllers\Admin',
+        'filter'    => 'admin'
+    ], function($routes) {
 
     $routes->get('/', 'Dashboard::index');
 
