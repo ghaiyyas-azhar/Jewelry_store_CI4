@@ -15,13 +15,12 @@
 <span class="font-serif italic text-primary text-xl mb-4 block">The Nahecididi Signature</span>
 <div class="h-px w-24 bg-primary/40 mx-auto"></div>
 </div>
-<h2 class="font-serif text-6xl md:text-8xl text-slate-900 mb-8 leading-[1.1] font-normal">
-                Reserve Online, <br/>
+<h2 class="font-serif text-6xl md:text-8xl text-slate-900 mb-8 leading-[1.1] font-normal"> Reserve Online, <br/>
 <span class="italic font-light">Experience in Person</span>
 </h2>
 <p class="text-slate-800 text-lg md:text-xl font-light mb-14 max-w-2xl mx-auto leading-relaxed tracking-wide">
-                A seamless union of digital convenience and boutique intimacy. Select your masterpiece online for a private viewing at your chosen Nahecididi boutique.
-            </p>
+A seamless union of digital convenience and boutique intimacy. Select your masterpiece online for a private viewing at your chosen Nahecididi boutique.
+</p>
 <div class="max-w-xl mx-auto bg-white/40 backdrop-blur-md p-1.5 border border-white/60 shadow-sm">
 
 <form action="/search-boutique" method="post" class="flex flex-col md:flex-row">

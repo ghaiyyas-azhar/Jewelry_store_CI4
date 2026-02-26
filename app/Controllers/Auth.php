@@ -8,8 +8,13 @@ class Auth extends BaseController
 
     public function login()
     {
-        // Jika sudah login, redirect ke homepage
         if (session()->get('logged_in')) {
+            
+            // Jika sudah login, redirect sesuai role
+            if (session()->get('role') === 'admin') {
+                return redirect()->to('/admin');
+            }
+
             return redirect()->to('/');
         }
 
@@ -51,8 +56,14 @@ class Auth extends BaseController
             'user_id'   => $user->id,
             'name'      => $user->name,
             'email'     => $user->email,
+            'role'      => $user->role, // tambah role
             'logged_in' => true
         ]);
+
+        // Redirect berdasarkan role
+        if ($user->role === 'admin') {
+            return redirect()->to('/admin');
+        }
 
         return redirect()->to('/');
     }
@@ -83,7 +94,6 @@ class Auth extends BaseController
         $db = \Config\Database::connect();
         $builder = $db->table('users');
 
-        // Cek email sudah ada atau belum
         $existingUser = $builder->where('email', $email)->get()->getRow();
 
         if ($existingUser) {
@@ -97,7 +107,8 @@ class Auth extends BaseController
         $builder->insert([
             'name'     => $name,
             'email'    => $email,
-            'password' => $password
+            'password' => $password,
+            'role'     => 'user' // default role
         ]);
 
         return redirect()->to('/login')
