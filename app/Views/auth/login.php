@@ -120,6 +120,16 @@ body {
     text-decoration: underline;
     color: #b8911f;
 }
+
+.error-box {
+    background: #fff4f4;
+    border-left: 4px solid #d00000;
+    padding: 12px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: #b00000;
+    text-align: left;
+}
 </style>
 
 </head>
@@ -128,7 +138,14 @@ body {
 <div class="login-box">
     <a href="/" class="btn-back">←</a>
     <h2 style="margin-bottom:30px; font-weight:300;">LOGIN</h2>
-        <form action="<?= base_url('login') ?>" method="post">
+
+<?php if(session()->getFlashdata('error')): ?>
+    <div class="error-box">
+        <?= session()->getFlashdata('error') ?>
+    </div>
+<?php endif; ?>
+
+<form action="<?= base_url('login') ?>" method="post">
         <input type="email" name="email" placeholder="Email" required>
         <input type="password" name="password" placeholder="Password" required>
         <button type="submit" class="btn-gold">LOGIN</button>

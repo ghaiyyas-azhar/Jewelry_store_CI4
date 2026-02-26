@@ -47,15 +47,19 @@ $routes->group('', function($routes) {
 
 $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($routes) {
 
+    // DASHBOARD
     $routes->get('/', 'Dashboard::index');
+    $routes->get('mark-collected/(:num)', 'Dashboard::markCollected/$1');
 
+    // INVENTORY
     $routes->get('inventory', 'Inventory::index');
-    $routes->get('pickups', 'PickupController::index');
-    $routes->get('appointments', 'AppointmentController::index');
-    $routes->get('clients', 'ClientController::index');
-    
+    $routes->get('inventory/create', 'Inventory::create');
+    $routes->post('inventory/store', 'Inventory::store');
+    $routes->get('inventory/edit/(:num)', 'Inventory::edit/$1');
+    $routes->post('inventory/update/(:num)', 'Inventory::update/$1');
+    $routes->get('inventory/delete/(:num)', 'Inventory::delete/$1');
 
-    // COLLECTION CRUD
+    // COLLECTIONS
     $routes->get('collections', 'CollectionController::index');
     $routes->get('collections/create', 'CollectionController::create');
     $routes->post('collections/store', 'CollectionController::store');
@@ -63,18 +67,20 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($rout
     $routes->post('collections/update/(:num)', 'CollectionController::update/$1');
     $routes->get('collections/delete/(:num)', 'CollectionController::delete/$1');
 
-    // INVENTORY CRUD
-    $routes->get('inventory', 'Inventory::index');
-$routes->get('inventory/create', 'Inventory::create');
-$routes->post('inventory/store', 'Inventory::store');
-
-$routes->get('inventory/edit/(:num)', 'Inventory::edit/$1');
-$routes->post('inventory/update/(:num)', 'Inventory::update/$1');
-$routes->get('inventory/delete/(:num)', 'Inventory::delete/$1');
-
-    // ACTION BUTTONS
+    // PICKUPS
+    $routes->get('pickups', 'PickupController::index');
     $routes->post('pickups/approve/(:num)', 'PickupController::approve/$1');
     $routes->post('pickups/decline/(:num)', 'PickupController::decline/$1');
     $routes->post('pickups/collected/(:num)', 'PickupController::markCollected/$1');
+
+    // APPOINTMENTS
+    $routes->get('appointments', 'AppointmentController::index');
+
+    // CLIENTS
+    $routes->get('clients', 'ClientController::index');
+$routes->get('clients/edit/(:num)', 'ClientController::edit/$1');
+$routes->post('clients/update/(:num)', 'ClientController::update/$1');
+$routes->get('clients/toggle-status/(:num)', 'ClientController::toggleStatus/$1');
+$routes->get('clients/delete/(:num)', 'ClientController::delete/$1');
 
 });
