@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
 
 <script>
@@ -52,12 +53,12 @@ tailwind.config = {
 <nav class="max-w-[1440px] mx-auto px-10 h-24 flex items-center justify-between">
 
 <div class="flex items-center space-x-10">
+    <a class="text-[10px] tracking-[0.4em] uppercase font-medium hover:text-primary transition-colors" href="<?= base_url('home') ?>">
+        Home
+    </a>
 <a class="text-[10px] tracking-[0.4em] uppercase font-medium hover:text-primary transition-colors"
    href="<?= base_url('collections') ?>">
    Collections
-</a>
-<a class="text-[10px] tracking-[0.4em] uppercase font-medium hover:text-primary transition-colors" href="#">
-   Bespoke
 </a>
 </div>
 
@@ -69,9 +70,6 @@ tailwind.config = {
 </div>
 
 <div class="flex items-center space-x-8">
-<a class="text-[10px] tracking-[0.4em] uppercase font-medium hover:text-primary transition-colors hidden md:block" href="#">
-   Boutiques
-</a>
 
 <div class="flex items-center space-x-5">
 
@@ -87,7 +85,7 @@ tailwind.config = {
 <span class="material-symbols-outlined !text-xl">shopping_bag</span>
 </button>
 
-<!-- USER DROPDOWN -->
+<!-- User Dropdown -->
 <div class="relative">
 
 <?php if(session()->get('logged_in')): ?>
@@ -103,25 +101,25 @@ tailwind.config = {
          class="hidden absolute right-0 mt-4 w-56 bg-white shadow-xl border border-primary/20">
 
         <a href="<?= base_url('profile') ?>" 
-           class="block px-6 py-3 text-sm hover:bg-gray-100">
+           class="bi bi-person-circle block px-6 py-3 text-sm hover:bg-gray-100">
            Profile
         </a>
 
         <a href="<?= base_url('payment-method') ?>" 
-           class="block px-6 py-3 text-sm hover:bg-gray-100">
+           class="bi bi-credit-card block px-6 py-3 text-sm hover:bg-gray-100">
            Payment Method
         </a>
 
         <a href="<?= base_url('purchase-history') ?>" 
-           class="block px-6 py-3 text-sm hover:bg-gray-100">
-           History Pembelian
+           class="bi bi-book-half block px-6 py-3 text-sm hover:bg-gray-100">
+           History 
         </a>
 
         <div class="border-t"></div>
 
         <a href="<?= base_url('logout') ?>" 
-           class="block px-6 py-3 text-sm text-red-500 hover:bg-gray-100">
-           Logout
+           class="bi bi-box-arrow-right block px-6 py-3 text-sm text-red-500 hover:bg-gray-100">
+            Logout
         </a>
     </div>
 
