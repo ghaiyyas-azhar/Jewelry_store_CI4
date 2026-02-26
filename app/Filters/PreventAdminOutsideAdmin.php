@@ -6,20 +6,19 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Filters\FilterInterface;
 
-class AdminFilter implements FilterInterface
+class PreventAdminOutsideAdmin implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        // Jika bukan admin → tendang
-        if (!session()->get('logged_in') || session()->get('role') !== 'admin') {
+        $uri = service('uri')->getSegment(1);
+
+        if (session()->get('role') === 'admin' && $uri !== 'admin') {
+            session()->destroy();
             return redirect()->to('/login');
         }
     }
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        // Cegah cache halaman admin
-        $response->setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
-        $response->setHeader('Pragma', 'no-cache');
     }
 }

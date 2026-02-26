@@ -95,142 +95,50 @@
 </div>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+
+<?php foreach($products as $product): ?>
+
 <div class="group">
-<div class="relative aspect-[4/5] overflow-hidden bg-marble-accent rounded-lg mb-4">
-<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="Exquisite diamond necklace on white marble" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn1QKCpcE1NfKR3dvvYcclozLO29QRZET5ecKCwtAmHzr9O48is6LpVuFlm2SqfN_JjHpUIKIbD8twZkhZeBeMkzgLj25f0zDE7qV570kPD-3ZJrs0u0v5jUQNsI9f2dCp04ewGVu-zCM9nedwdA2pcgO2SZuALukoomA_IIDQWHnkVllCEGPolFpu__O-YBEWlrOyJ3rXTye831gGhNsCUQiJVTLtlD4v0spkMbUbb2ztajVYZ7Ea6bzMv72Zdb8QWqDla3EMmqo"/>
-<div class="absolute top-4 right-4 bg-white/90 dark:bg-background-dark/90 px-3 py-1 text-[10px] font-bold tracking-tighter text-primary border border-primary/20 rounded shadow-sm">
-                                BOUTIQUE PICKUP
-                            </div>
-</div>
-<div class="space-y-1 mb-6">
-<p class="text-[10px] uppercase tracking-[0.2em] text-gray-500">Celestial Light Collection</p>
-<h3 class="text-lg font-medium group-hover:text-primary transition-colors">Astra Diamond Choker</h3>
-<p class="text-sm text-gray-400">18k White Gold, 4.5 Carat Total Weight</p>
-<p class="text-lg font-semibold pt-2 text-charcoal dark:text-gray-100">$32,400</p>
-</div>
-<div class="flex flex-col gap-2">
-<button class="w-full bg-black text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-gray-900 transition-colors">
-ADD TO CART
-</button>
+    <div class="relative aspect-[4/5] overflow-hidden bg-marble-accent rounded-lg mb-4">
+        <img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+            src="<?= base_url('uploads/products/' . $product['image']) ?>"
+            alt="<?= esc($product['name']) ?>">
 
-<a href="<?= base_url('product/astra-diamond-choker') ?>" 
-   class="w-full bg-primary text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-[#d4a929] transition-colors text-center block">
-   RESERVE FOR PICKUP
-</a>
+        <?php if($product['is_pickup']): ?>
+        <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 text-[10px] font-bold tracking-tighter text-primary border border-primary/20 rounded shadow-sm">
+            BOUTIQUE PICKUP
+        </div>
+        <?php endif; ?>
+    </div>
 
-</div>
-</div>
-<div class="group">
-<div class="relative aspect-[4/5] overflow-hidden bg-marble-accent rounded-lg mb-4">
-<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="Emerald and diamond vintage ring" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOUwM8a7-jhhrQ-_Vvk6Gumad2C3o1daZKjTgTHly8Mat8X7eWDHwuoZSr0caGKXiW6YfvFV6Y9VX950qGgRktb0Wtsh5vD9fAGS31MVRCscv7c6k7x6aoiL8mCJQc97XSymUqkxMeXKZfjqxIV4T6NYKlMX4l0tO4lV4HcrqW0AvmkCV3PAp46GdYZEq3wkpG7lBGeiEXUPHxcL6u3Ni5KFQOTJ4TFH8TbhI5mAwd08jbTfvXWq8zqXFnoUEOO_CHpJCvbenWfak"/>
-</div>
-<div class="space-y-1 mb-6">
-<p class="text-[10px] uppercase tracking-[0.2em] text-gray-500">Emerald Dreams</p>
-<h3 class="text-lg font-medium group-hover:text-primary transition-colors">Verdant Muse Ring</h3>
-<p class="text-sm text-gray-400">Colombian Emerald, 18k Yellow Gold</p>
-<p class="text-lg font-semibold pt-2 text-charcoal dark:text-gray-100">$18,900</p>
-</div>
-<div class="flex flex-col gap-2">
-<button class="w-full bg-black text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-gray-900 transition-colors">
-ADD TO CART
-</button>
+    <div class="space-y-1 mb-6">
+        <p class="text-[10px] uppercase tracking-[0.2em] text-gray-500">
+            <?= esc($product['collection_name']) ?>
+        </p>
 
-<a href="<?= base_url('product/verdant-muse-ring') ?>" 
-   class="w-full bg-primary text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-[#d4a929] transition-colors text-center block">
-   RESERVE FOR PICKUP
-</a>
-</div>
-</div>
-<div class="group">
-<div class="relative aspect-[4/5] overflow-hidden bg-marble-accent rounded-lg mb-4">
-<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="Solid gold cuff bracelet" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0N4ZSssGKxpzD4WvGtzPWwMNaCRXyXrq9tiSIeSJx08gQnaUD51tH-jdixdoe-bT3ogB43Va5CScMXVMZAytKN_0_sLVdnxd-fGyQ_vxwk1krJ3qA2PF19teFSov8uPq9WYP-e0tmLWqZS3Iy_WknnFrh4qwy8Kq9nVw-TttIJy4FThSbaz8RCgfDYsRpG3abctyRP3I5o1mwNeUhdW9h84tWhkB1nJUfuPYleGb8FsXmRzC6MZHDS8EPa7lIVUomnzEU4v1Eh7Y"/>
-<div class="absolute top-4 right-4 bg-white/90 dark:bg-background-dark/90 px-3 py-1 text-[10px] font-bold tracking-tighter text-primary border border-primary/20 rounded shadow-sm">
-                                BOUTIQUE PICKUP
-                            </div>
-</div>
-<div class="space-y-1 mb-6">
-<p class="text-[10px] uppercase tracking-[0.2em] text-gray-500">Gilded Age</p>
-<h3 class="text-lg font-medium group-hover:text-primary transition-colors">Eternal Aurelian Cuff</h3>
-<p class="text-sm text-gray-400">Sculpted 22k Solid Gold</p>
-<p class="text-lg font-semibold pt-2 text-charcoal dark:text-gray-100">$8,250</p>
-</div>
-<div class="flex flex-col gap-2">
-<button class="w-full bg-black text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-gray-900 transition-colors">
-ADD TO CART
-</button>
+        <h3 class="text-lg font-medium group-hover:text-primary transition-colors">
+            <?= esc($product['name']) ?>
+        </h3>
 
-<a href="<?= base_url('product/eternal-aurelian-cuff') ?>" 
-   class="w-full bg-primary text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-[#d4a929] transition-colors text-center block">
-   RESERVE FOR PICKUP
-</a>
-</div>
-</div>
-<div class="group">
-<div class="relative aspect-[4/5] overflow-hidden bg-marble-accent rounded-lg mb-4">
-<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="Diamond drop earrings on neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtlwNfo0d6IV14IdmkT5A8TrTbGmh0JIb0NkszB9K23vkV5x1XnFlSnCDkeM_YiNyHAYgONhDZ0rAr8OYzpZOAwu5mxSJtIWhx1qVraSAznoYNFRwWaVPEmwJFWZYwP9Wl0WUxY6dwpAvZ_n-l45dX3Ss3pIxTbP1rqhwRWpfA9aydkQGNRqvqxW457quarShMzPlVqQ_pd8KEVXvWkwsNuurmNda9KzwXOH7iFiypqtwM0XIsiBAyF60NRO8zQ7WV1gZmSPJGFwU"/>
-</div>
-<div class="space-y-1 mb-6">
-<p class="text-[10px] uppercase tracking-[0.2em] text-gray-500">Heirloom Radiance</p>
-<h3 class="text-lg font-medium group-hover:text-primary transition-colors">Cascade Diamond Drops</h3>
-<p class="text-sm text-gray-400">Platinum, Marquise &amp; Pear Cut</p>
-<p class="text-lg font-semibold pt-2 text-charcoal dark:text-gray-100">$12,400</p>
-</div>
-<div class="flex flex-col gap-2">
-<button class="w-full bg-black text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-gray-900 transition-colors">
-ADD TO CART
-</button>
+        <p class="text-sm text-gray-400">
+            <?= esc($product['material']) ?>
+        </p>
 
-<a href="<?= base_url('product/cascade-diamond-drops') ?>" 
-   class="w-full bg-primary text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-[#d4a929] transition-colors text-center block">
-   RESERVE FOR PICKUP
-</a>
-</div>
-</div>
-<div class="group">
-<div class="relative aspect-[4/5] overflow-hidden bg-marble-accent rounded-lg mb-4">
-<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="Sapphire gemstone pendant necklace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtFSw0EPTmjs5ftW1q0jo0qGLRLhq7g4CHXzqTDVRoOa06-dDLJzUKHWS9B0HsC5sYeoKUafdER7jXna-GSsriqYV4f3clFNd2Wu-0CINs4pWvx2DyDwg1tt639Pk6GjD1QXeiL4NLHUMW0YdG6DaUDR6lTSXQ1_C9oAmoeTCwVtgNy7CFAuJCZmN2Ixu9FOoZpHi1CywQBGrlWNPsXwSZNfkIwibPp7rIMP5-RBVB62cPq-vGjSV1bLfYLZJdhsFv8F6CuSNPl3o"/>
-</div>
-<div class="space-y-1 mb-6">
-<p class="text-[10px] uppercase tracking-[0.2em] text-gray-500">Midnight Diamond</p>
-<h3 class="text-lg font-medium group-hover:text-primary transition-colors">Midnight Star Pendant</h3>
-<p class="text-sm text-gray-400">Blue Sapphire, 18k White Gold</p>
-<p class="text-lg font-semibold pt-2 text-charcoal dark:text-gray-100">$15,600</p>
-</div>
-<div class="flex flex-col gap-2">
-<button class="w-full bg-black text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-gray-900 transition-colors">
-ADD TO CART
-</button>
+        <p class="text-lg font-semibold pt-2 text-charcoal">
+            $<?= number_format($product['price'], 0, ',', ',') ?>
+        </p>
+    </div>
 
-<a href="<?= base_url('product/midnight-star-pendant') ?>" 
-   class="w-full bg-primary text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-[#d4a929] transition-colors text-center block">
-   RESERVE FOR PICKUP
-</a>
+    <div class="flex flex-col gap-2">
+        <a href="<?= base_url('product/'.$product['slug']) ?>"
+           class="w-full bg-primary text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-[#d4a929] transition-colors text-center block">
+           VIEW DETAILS
+        </a>
+    </div>
 </div>
-</div>
-<div class="group">
-<div class="relative aspect-[4/5] overflow-hidden bg-marble-accent rounded-lg mb-4">
-<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="Rose gold delicate bracelet" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDow6bj6tfsJ-pHFxGhOffUjd-X1Ozz8M72nTyRZKMiS6vfSK78a2sE6jmjA4PJDjoGq4t6ydoMSH4xybQwGeEYisDY0-jXDCg1Ky5WZoMGhatw36w5AoFAu7LCKPAE4Nsm3h5lWA9aAmBcKtoB196QEb4bwMT0sktrgLwIJX9R_61GCsXtbIufULEIpEdS4wzZ-T21HHGTFlF0OzosQ8ITt71dZUh6zU534Gv0kt6kZGUL-Kv5OMHRC7J78jo0g-hmFToK-PkYO88"/>
-<div class="absolute top-4 right-4 bg-white/90 dark:bg-background-dark/90 px-3 py-1 text-[10px] font-bold tracking-tighter text-primary border border-primary/20 rounded shadow-sm">
-                                BOUTIQUE PICKUP
-                            </div>
-</div>
-<div class="space-y-1 mb-6">
-<p class="text-[10px] uppercase tracking-[0.2em] text-gray-500">Celestial Light</p>
-<h3 class="text-lg font-medium group-hover:text-primary transition-colors">Seraphina Rose Link</h3>
-<p class="text-sm text-gray-400">18k Rose Gold, Pavé Diamonds</p>
-<p class="text-lg font-semibold pt-2 text-charcoal dark:text-gray-100">$6,450</p>
-</div>
-<div class="flex flex-col gap-2">
-<button class="w-full bg-black text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-gray-900 transition-colors">
-ADD TO CART
-</button>
 
-<a href="<?= base_url('product/seraphina-rose-link') ?>" 
-   class="w-full bg-primary text-white py-3 text-[10px] font-bold tracking-[0.15em] uppercase rounded hover:bg-[#d4a929] transition-colors text-center block">
-   RESERVE FOR PICKUP
-</a>
-</div>
-</div>
+<?php endforeach; ?>
+
 </div>
 <div class="mt-20 flex items-center justify-center space-x-4">
 <button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:border-primary hover:text-primary transition-colors">

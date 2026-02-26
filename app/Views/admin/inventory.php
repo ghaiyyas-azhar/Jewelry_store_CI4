@@ -36,8 +36,8 @@
                 <tr class="border-t border-white/5">
 
                     <td class="p-4">
-                        <?php if ($p['image']): ?>
-                            <img src="/uploads/<?= $p['image'] ?>" width="60">
+                        <?php if (!empty($p['image'])): ?>
+                            <img src="<?= base_url('uploads/products/' . $p['image']) ?>" width="60">
                         <?php else: ?>
                             -
                         <?php endif; ?>

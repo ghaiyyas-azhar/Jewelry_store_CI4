@@ -8,12 +8,12 @@ class RemoveImageFromCollections extends Migration
 {
     public function up()
     {
-        $this->forge->dropColumn('collections', 'image');
+        $this->forge->dropColumn('products', 'image');
     }
 
     public function down()
     {
-        $this->forge->addColumn('collections', [
+        $this->forge->addColumn('products', [
             'image' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,

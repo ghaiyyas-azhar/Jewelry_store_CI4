@@ -121,9 +121,6 @@ Search
 <span class="text-xs uppercase tracking-[0.2em] font-medium">Global Concierge Privileges</span>
 </li>
 </ul>
-<button class="bg-primary text-white px-12 py-5 text-[10px] tracking-[0.4em] uppercase font-bold hover:bg-slate-900 transition-all shadow-lg">
-                        Our Global Boutiques
-                    </button>
 </div>
 </div>
 </div>
