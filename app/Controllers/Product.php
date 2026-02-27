@@ -18,7 +18,7 @@ class Product extends BaseController
         $product = $this->productModel
             ->select('products.*, collections.name as collection_name')
             ->join('collections', 'collections.id = products.collection_id')
-            ->where('products.slug', $slug) // INI YANG PENTING
+            ->where('products.slug', $slug) // ini penting
             ->first();
 
         return view('Pages/product_detail', [

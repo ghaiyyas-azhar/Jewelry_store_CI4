@@ -68,6 +68,11 @@
 <div class="max-w-4xl w-full">
 <div class="text-center mb-12">
 <span class="material-symbols-outlined text-primary text-5xl mb-4">check_circle</span>
+<?php if (session()->getFlashdata('success_message')): ?>
+    <div class="mb-6 text-green-600 text-sm uppercase tracking-widest">
+        <?= session()->getFlashdata('success_message'); ?>
+    </div>
+<?php endif; ?>
 <h1 class="text-3xl font-light tracking-tight text-charcoal mb-2">Reservation Confirmed</h1>
 <p class="text-gray-500 text-sm tracking-widest uppercase">Order #NH7829-AD</p>
 </div>

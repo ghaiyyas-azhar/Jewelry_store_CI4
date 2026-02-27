@@ -18,6 +18,10 @@ $routes->get('products', 'Product::index');
 $routes->get('product/(:segment)', 'Product::detail/$1');
 
 // PICKUP CUSTOMER
+$routes->post('/pickup/confirm', 'Pickup::confirm');
+$routes->get('/success', function() {
+    return view('pages/success');
+});
 $routes->get('pickup', 'Pickup::index');
 $routes->get('success', 'Success::index');
 
