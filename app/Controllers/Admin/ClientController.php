@@ -101,12 +101,23 @@ class ClientController extends BaseController
 }
 
     public function update($id)
-    {
-        $this->userModel->update($id, [
-            'name'  => $this->request->getPost('name'),
-            'phone' => $this->request->getPost('phone')
-        ]);
+{
+    $name  = trim($this->request->getPost('name'));
+    $phone = trim($this->request->getPost('phone'));
 
-        return redirect()->to('/admin/clients');
+    // Validasi sederhana
+    if (!$name) {
+        return redirect()->back()
+            ->with('error', 'Full Name is required')
+            ->withInput();
     }
+
+    $this->userModel->update($id, [
+        'name'  => $name,
+        'phone' => $phone
+    ]);
+
+    return redirect()->to('/admin/clients')
+        ->with('success', 'Client updated successfully');
+}
 }

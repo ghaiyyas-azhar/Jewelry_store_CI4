@@ -74,13 +74,24 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($rout
     $routes->post('pickups/collected/(:num)', 'PickupController::markCollected/$1');
 
     // APPOINTMENTS
-    $routes->get('appointments', 'AppointmentController::index');
-
+    $routes->get('appointments', 'PickupController::index');
+    $routes->get('appointments/collect/(:num)', 'PickupController::markCollected/$1');
+   
     // CLIENTS
     $routes->get('clients', 'ClientController::index');
-$routes->get('clients/edit/(:num)', 'ClientController::edit/$1');
-$routes->post('clients/update/(:num)', 'ClientController::update/$1');
-$routes->get('clients/toggle-status/(:num)', 'ClientController::toggleStatus/$1');
-$routes->get('clients/delete/(:num)', 'ClientController::delete/$1');
+    $routes->get('clients/edit/(:num)', 'ClientController::edit/$1');
+    $routes->post('clients/update/(:num)', 'ClientController::update/$1');
+    $routes->get('clients/toggle-status/(:num)', 'ClientController::toggleStatus/$1');
+    $routes->get('clients/delete/(:num)', 'ClientController::delete/$1');
+    
+    // BOUTIQUES
+    $routes->get('boutiques', 'BoutiqueController::index');
+    $routes->get('boutiques/create', 'BoutiqueController::create');
+    $routes->post('boutiques/store', 'BoutiqueController::store');
+    $routes->get('boutiques/edit/(:num)', 'BoutiqueController::edit/$1');
+    $routes->post('boutiques/update/(:num)', 'BoutiqueController::update/$1');
+    $routes->get('boutiques/delete/(:num)', 'BoutiqueController::delete/$1');
 
+    // ADMIN LOGOUT
+    $routes->get('logout', 'Dashboard::logout');
 });
