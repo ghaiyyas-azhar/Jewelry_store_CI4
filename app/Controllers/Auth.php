@@ -105,8 +105,15 @@ class Auth extends BaseController
     // ================= LOGOUT =================
 
     public function logout()
-    {
-        session()->destroy();
-        return redirect()->to('/');
+{
+    $role = session()->get('role'); // ambil role dulu sebelum destroy
+
+    session()->destroy();
+
+    if ($role === 'admin') {
+        return redirect()->to('/login');
     }
+
+    return redirect()->to('/');
+}
 }

@@ -45,7 +45,10 @@ $routes->group('', function($routes) {
 
 // ================= ADMIN AREA =================
 
-$routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($routes) {
+$routes->group('admin', [
+    'namespace' => 'App\Controllers\Admin',
+    'filter' => 'admin'
+], function($routes) {
 
     // DASHBOARD
     $routes->get('/', 'Dashboard::index');

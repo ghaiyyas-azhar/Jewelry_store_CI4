@@ -125,12 +125,12 @@ Boutique Management
         </div>
 
         <!-- Logout Icon -->
-        <a href="<?= base_url('admin/logout') ?>" 
-           class="text-red-400 hover:text-red-300 transition">
-            <span class="material-symbols-outlined text-sm">
-                logout
-            </span>
-        </a>
+        <a href="<?= base_url('logout') ?>"
+   class="text-red-400 hover:text-red-300 transition">
+   <span class="material-symbols-outlined text-sm">
+       logout
+   </span>
+</a>
 
     </div>
 
