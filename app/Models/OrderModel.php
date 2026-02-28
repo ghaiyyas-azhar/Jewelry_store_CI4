@@ -10,6 +10,8 @@ class OrderModel extends Model
     protected $primaryKey = 'id';
     protected $returnType = 'array';
 
+    protected $useTimestamps = false; // ⬅ WAJIB TAMBAHKAN
+
     protected $allowedFields = [
         'user_id',
         'order_code',

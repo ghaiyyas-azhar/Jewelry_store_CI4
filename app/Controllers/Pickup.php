@@ -3,19 +3,29 @@
 namespace App\Controllers;
 
 use App\Models\ProductModel;
+use App\Models\OrderModel;
 use App\Models\PickupAppointmentModel;
 
 class Pickup extends BaseController
 {
+    protected $productModel;
+    protected $orderModel;
+    protected $pickupModel;
+
+    public function __construct()
+    {
+        $this->productModel = new ProductModel();
+        $this->orderModel   = new OrderModel();
+        $this->pickupModel  = new PickupAppointmentModel();
+    }
+
     public function index($slug = null)
     {
         if (!$slug) {
             return redirect()->to('/collections');
         }
 
-        $productModel = new ProductModel();
-
-        $product = $productModel
+        $product = $this->productModel
             ->select('products.*, collections.name as collection_name')
             ->join('collections', 'collections.id = products.collection_id')
             ->where('products.slug', $slug)
@@ -30,24 +40,35 @@ class Pickup extends BaseController
         ]);
     }
 
-    // ✅ Tambahkan method confirm untuk handle form submit
-  public function confirm()
-{
-    $data = [
-        'users_id'         => $this->request->getPost('users_id'),
-        'boutique_id'      => $this->request->getPost('boutique_id'),
-        'appointment_date' => $this->request->getPost('appointment_date'),
-        'appointment_time' => $this->request->getPost('appointment_time'),
-        'status'           => 'pending'
-    ];
+    public function confirm()
+    {
+        $userId = session()->get('user_id');
 
-    $db = \Config\Database::connect();
+        if (!$userId) {
+            return redirect()->back()->with('error', 'Please login first.');
+        }
 
-    if ($db->table('pickup_appointments')->insert($data)) {
-        return redirect()->to('/success');
-    } else {
-        // Jika gagal insert
-        return redirect()->back()->with('error', 'Failed to create appointment.');
+        $orderModel = new OrderModel();
+
+        // Siapkan data order beserta rencana janji temunya (requested)
+        $orderData = [
+            'user_id'        => $userId,
+            'order_code'     => 'ORD-' . time(),
+            'total_price'    => $this->request->getPost('total_price'),
+            'status'         => 'pending',
+            'boutique_id'    => $this->request->getPost('boutique_id'),
+            'requested_date' => $this->request->getPost('appointment_date'), // Dari hidden input view
+            'requested_time' => $this->request->getPost('appointment_time'), // Dari hidden input view
+            'created_at'     => date('Y-m-d H:i:s')
+        ];
+
+        // Simpan ke tabel orders
+        if ($orderModel->insert($orderData)) {
+            // Berhasil: Langsung ke halaman sukses tanpa membuat pickup_appointment dulu
+            return redirect()->to('/success');
+        } else {
+            // Jika gagal simpan order, balik ke form
+            return redirect()->back()->with('error', 'Gagal memproses pesanan.');
+        }
     }
-}
 }

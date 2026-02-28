@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\ProductModel;
+use App\Models\BoutiqueModel;
 
 class Product extends BaseController
 {
@@ -18,11 +19,19 @@ class Product extends BaseController
         $product = $this->productModel
             ->select('products.*, collections.name as collection_name')
             ->join('collections', 'collections.id = products.collection_id')
-            ->where('products.slug', $slug) // ini penting
+            ->where('products.slug', $slug)
             ->first();
 
-        return view('Pages/product_detail', [
-            'product' => $product
+        if (!$product) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+
+        $boutiqueModel = new BoutiqueModel();
+        $boutiques = $boutiqueModel->findAll();
+
+        return view('pages/product_detail', [ // pastikan folder huruf kecil jika memang kecil
+            'product'   => $product,
+            'boutiques' => $boutiques
         ]);
     }
 }

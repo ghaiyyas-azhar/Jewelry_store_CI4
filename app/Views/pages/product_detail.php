@@ -90,11 +90,15 @@
 
             <div class="space-y-4">
                 <div class="relative">
-                    <select class="w-full bg-white border border-gray-200 py-3 pl-4 pr-10 text-xs font-medium appearance-none uppercase tracking-widest outline-none">
-                        <option>New York - Fifth Avenue Flagship</option>
-                        <option>Paris - Place Vendôme</option>
-                        <option>London - Bond Street</option>
-                        <option>Dubai - Mall of the Emirates</option>
+                    <select name="boutique_id"
+                        class="w-full bg-white border border-gray-200 py-3 pl-4 pr-10 text-xs font-medium appearance-none uppercase tracking-widest outline-none">
+
+                        <?php foreach ($boutiques as $boutique): ?>
+                            <option value="<?= $boutique['id'] ?>">
+                                <?= esc($boutique['city']) ?> - <?= esc($boutique['name']) ?>
+                            </option>
+                        <?php endforeach; ?>
+
                     </select>
                     <span class="material-symbols-outlined absolute right-3 top-2.5 text-primary pointer-events-none">
                         expand_more

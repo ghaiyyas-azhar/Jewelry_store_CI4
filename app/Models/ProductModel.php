@@ -20,13 +20,20 @@ class ProductModel extends Model
     'material',
     'description',
     'image',
-    'stock'
+    'stock',
+    'is_active',
+    'is_pickup'
 ];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
 
-    protected array $casts = [];
+    protected array $casts = [
+    'is_active' => 'boolean',
+    'is_pickup' => 'boolean',
+    'price'     => 'float',
+    'stock'     => 'integer',
+];
     protected array $castHandlers = [];
 
     // Dates
@@ -52,4 +59,17 @@ class ProductModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function detail($slug)
+{
+    $productModel = new ProductModel();
+
+    $product = $productModel
+        ->where('slug', $slug)
+        ->first();
+
+    return view('pages/product_detail', [
+        'product' => $product
+    ]);
+}
 }

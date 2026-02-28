@@ -23,7 +23,8 @@ $routes->get('/success', function() {
     return view('pages/success');
 });
 $routes->get('pickup', 'Pickup::index');
-$routes->get('success', 'Success::index');
+$routes->get('success', 'Home::success'); // atau ke controller mana saja yang Anda buat
+$routes->get('admin/order/approve/(:num)', 'Admin\OrderController::approveOrder/$1');
 
 
 // ================= AUTH =================

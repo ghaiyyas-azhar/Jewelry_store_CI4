@@ -1,8 +1,8 @@
-<!DOCTYPE html>
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Astra Choker Digital Pass | Nahecididi</title>
+<?php $title = "Nahecididi | Luxury Jewelry & Private Viewings"; ?>
+<?= $this->include('layout/header'); ?>
+
+<script src="<?= base_url('assets/js/app.js') ?>"></script>
+
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
@@ -54,16 +54,6 @@
     </style>
 </head>
 <body class="marble-bg min-h-screen flex flex-col">
-<header class="border-b border-primary/10 bg-white/90 backdrop-blur-md sticky top-0 z-50">
-<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-<div class="flex items-center space-x-12">
-<a class="text-2xl font-bold tracking-[0.3em] text-charcoal uppercase" href="#">Nahecididi</a>
-</div>
-<div class="hidden md:block">
-<p class="text-[10px] tracking-[0.3em] uppercase text-gray-400">Order Confirmation</p>
-</div>
-</div>
-</header>
 <main class="flex-grow flex items-center justify-center py-16 px-6">
 <div class="max-w-4xl w-full">
 <div class="text-center mb-12">

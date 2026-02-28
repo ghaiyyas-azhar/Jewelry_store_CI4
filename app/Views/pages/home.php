@@ -15,40 +15,15 @@
 <span class="font-serif italic text-primary text-xl mb-4 block">The Nahecididi Signature</span>
 <div class="h-px w-24 bg-primary/40 mx-auto"></div>
 </div>
-<h2 class="font-serif text-6xl md:text-8xl text-slate-900 mb-8 leading-[1.1] font-normal"> Reserve Online, <br/>
-<span class="italic font-light">Experience in Person</span>
+<h2 class="font-serif text-6xl md:text-8xl text-white mb-8 leading-[1.1] font-normal">
+    Reserve Online, <br/>
+    <span class="italic font-light text-white">Experience in Person</span>
 </h2>
-<p class="text-slate-800 text-lg md:text-xl font-light mb-14 max-w-2xl mx-auto leading-relaxed tracking-wide">
-A seamless union of digital convenience and boutique intimacy. Select your masterpiece online for a private viewing at your chosen Nahecididi boutique.
+
+<p class="text-white text-lg md:text-xl font-light mb-14 max-w-2xl mx-auto leading-relaxed tracking-wide">
+    A seamless union of digital convenience and boutique intimacy. Select your masterpiece online for a private viewing at your chosen Nahecididi boutique.
 </p>
-<div class="max-w-xl mx-auto bg-white/40 backdrop-blur-md p-1.5 border border-white/60 shadow-sm">
 
-<form action="/search-boutique" method="post" class="flex flex-col md:flex-row">
-
-<div class="flex-grow relative">
-<span class="material-symbols-outlined absolute left-5 top-1/2 -translate-y-1/2 text-primary">location_on</span>
-
-<input 
-    name="location"
-    type="text"
-    placeholder="Find your nearest boutique"
-    class="w-full bg-white border-none pl-14 pr-4 py-5 text-slate-900 focus:ring-1 focus:ring-primary placeholder:text-slate-400 placeholder:text-xs placeholder:uppercase placeholder:tracking-[0.2em]"
-/>
-</div>
-
-<button type="submit" class="bg-slate-900 hover:bg-primary text-white px-10 py-5 font-medium tracking-[0.2em] uppercase text-xs transition-all flex items-center justify-center">
-Search
-</button>
-
-</form>
-
-</div>
-<div class="mt-12">
-<button class="text-slate-900/60 hover:text-primary text-[10px] tracking-[0.4em] uppercase flex items-center justify-center mx-auto transition-colors group">
-<span>Explore Our Collections</span>
-<span class="material-symbols-outlined ml-3 !text-sm group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
-</button>
-</div>
 </div>
 <div class="absolute bottom-12 left-1/2 -translate-x-1/2 text-slate-400 flex flex-col items-center">
 <div class="w-px h-16 bg-primary/30 relative">

@@ -1,5 +1,6 @@
 <?php $title = "Schedule Pickup | Nahecididi"; ?>
 <?= $this->include('layout/header'); ?>
+<script src="<?= base_url('assets/js/app.js') ?>"></script>
 
 <style type="text/css">
     /* Gunakan warna dari config tailwind header kamu */
@@ -45,18 +46,18 @@
     </div>
 
     <form action="<?= base_url('pickup/confirm') ?>" method="post" onsubmit="return validateForm()">
-        <?= csrf_field(); ?>
-        
-        <input type="hidden" name="users_id" value="<?= session()->get('user_id'); ?>">
-        <input type="hidden" name="boutique_id" value="1">
-        <input type="hidden" name="appointment_date" id="pickup_date_input">
-        <input type="hidden" name="appointment_time" id="pickup_time_input">
+    <?= csrf_field(); ?>
 
-        <div class="flex flex-col lg:flex-row gap-20">
+    <input type="hidden" name="boutique_id" value="1">
+    <input type="hidden" name="total_price" value="<?= $product['price']; ?>">
+    <input type="hidden" name="appointment_date" id="pickup_date_input">
+    <input type="hidden" name="appointment_time" id="pickup_time_input">
+
+    <div class="flex flex-col lg:flex-row gap-20">
             
             <div class="flex-grow">
                 <h1 class="font-serif text-4xl mb-4">Schedule Appointment</h1>
-                <p class="text-[11px] tracking-widest uppercase opacity-60 mb-12">Select your preferred date and time for boutique viewing</p>
+                <p class="text-[11px] tracking-widest uppercase opacity-60 mb-12">Select your preferred date and time for Jewelry Viewing</p>
                 
                 <div class="max-w-xl">
                     <div class="flex items-center justify-between mb-8">
@@ -156,12 +157,91 @@ function selectTime(el) {
     el.classList.add('selected');
     document.getElementById('pickup_time_input').value = el.innerText.trim();
 }
+
+function showLuxuryToast(message) {
+    const toast = document.getElementById('luxuryToast');
+    const text = document.getElementById('toastMessage');
+
+    text.innerText = message;
+
+    toast.classList.remove('opacity-0', 'scale-95');
+    toast.classList.add('opacity-100', 'scale-100');
+
+    setTimeout(() => {
+        toast.classList.remove('opacity-100', 'scale-100');
+        toast.classList.add('opacity-0', 'scale-95');
+    }, 1000); // ⏱ hilang dalam 1 detik
+}
+
 function validateForm() {
-    if (!document.getElementById('pickup_date_input').value) { alert("Please select a date."); return false; }
-    if (!document.getElementById('pickup_time_input').value) { alert("Please select a time."); return false; }
+
+    const userId = "<?= session()->get('user_id'); ?>";
+
+    if (!userId) {
+        openLoginModal();
+        return false;
+    }
+
+    if (!document.getElementById('pickup_date_input').value) {
+        showLuxuryToast("Please select a date");
+        return false;
+    }
+
+    if (!document.getElementById('pickup_time_input').value) {
+        showLuxuryToast("Please select a time");
+        return false;
+    }
+
     return true;
+}
+
+function openLoginModal() {
+    document.getElementById('loginModal').classList.remove('hidden');
+    document.getElementById('loginModal').classList.add('flex');
+}
+
+function closeLoginModal() {
+    document.getElementById('loginModal').classList.add('hidden');
+    document.getElementById('loginModal').classList.remove('flex');
 }
 renderCalendar();
 </script>
+
+<!-- Login Required Modal -->
+<div id="loginModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50">
+    <div class="bg-white w-[420px] p-12 shadow-2xl relative">
+
+        <h2 class="text-center text-2xl tracking-widest mb-8 font-light">
+            LOGIN REQUIRED
+        </h2>
+
+        <p class="text-center text-sm tracking-wide opacity-70 mb-10">
+            Please login first to schedule your appointment.
+        </p>
+
+        <div class="flex flex-col gap-4">
+            <a href="<?= base_url('login'); ?>"
+               class="bg-[#C6A52D] text-white text-center py-4 tracking-[0.3em] text-xs uppercase font-bold hover:opacity-90 transition">
+                Login
+            </a>
+
+            <button onclick="closeLoginModal()"
+                class="border border-black py-4 text-xs tracking-[0.3em] uppercase hover:bg-black hover:text-white transition">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Luxury Toast Notification -->
+<div id="luxuryToast"
+     class="fixed inset-0 flex items-center justify-center pointer-events-none z-50 opacity-0 scale-95 transition-all duration-300">
+
+    <div class="bg-white px-10 py-6 shadow-2xl border border-[#C6A52D]/30">
+        <p id="toastMessage"
+           class="text-xs tracking-[0.3em] uppercase text-center font-semibold text-black">
+        </p>
+    </div>
+</div>
 
 <?= $this->include('layout/footer'); ?>
