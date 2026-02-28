@@ -101,7 +101,7 @@ const ctx = document.getElementById('salesChart').getContext('2d');
 new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+        labels: <?= $weeklyLabels ?>,
         datasets: [{
             label: 'Weekly Sales',
             data: <?= $weeklyData ?>,
@@ -116,12 +116,8 @@ new Chart(ctx, {
             legend: { display: false }
         },
         scales: {
-            x: {
-                ticks: { color: '#aaa' }
-            },
-            y: {
-                ticks: { color: '#aaa' }
-            }
+            x: { ticks: { color: '#aaa' } },
+            y: { ticks: { color: '#aaa' } }
         }
     }
 });

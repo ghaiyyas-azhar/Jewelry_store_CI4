@@ -85,7 +85,56 @@ Boutique Management
 <span>Boutiques</span>
 </a>
 
+<a class="admin-sidebar-item" href="<?= base_url('admin/appointments') ?>">
+<span class="material-symbols-outlined">calendar_month</span>
+<span>Appointments</span>
+</a>
+
 </nav>
+
+<!-- PROFILE SECTION (TARUH DI SINI) -->
+<!-- ADMIN PROFILE CARD -->
+<div class="mt-auto p-6 border-t border-white/10">
+
+    <div class="bg-gradient-to-r from-[#1f1f1f] to-[#181818] 
+                border border-primary/30 
+                rounded-xl 
+                p-4 
+                flex items-center justify-between">
+
+        <div class="flex items-center space-x-4">
+
+            <!-- Avatar -->
+            <div class="w-12 h-12 rounded-full 
+                        bg-primary text-black 
+                        flex items-center justify-center 
+                        font-bold text-sm">
+                <?= strtoupper(substr(session()->get('name'), 0, 2)) ?>
+            </div>
+
+            <!-- Info -->
+            <div>
+                <p class="text-xs tracking-widest text-gray-400 uppercase">
+                    <?= session()->get('role') ?? 'Administrator' ?>
+                </p>
+                <p class="text-sm font-semibold text-white">
+                    <?= session()->get('name') ?>
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Logout Icon -->
+        <a href="<?= base_url('logout') ?>"
+   class="text-red-400 hover:text-red-300 transition">
+   <span class="material-symbols-outlined text-sm">
+       logout
+   </span>
+</a>
+
+    </div>
+
+</div>
 
 </aside>
 
@@ -95,6 +144,8 @@ Boutique Management
 <?= $this->renderSection('content') ?>
 
 </main>
+
+
 
 </div>
 </body>
