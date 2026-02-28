@@ -43,6 +43,42 @@
 
     <?php endforeach; ?>
 
+<!-- HISTORY SECTION -->
+<div class="mt-16">
+<h4 class="text-xs font-bold uppercase tracking-widest text-gray-500 mt-16 mb-6">
+    Appointment History
+</h4>
+
+<?php if (!empty($history)) : ?>
+    <?php foreach ($history as $h) : ?>
+        <div class="luxury-card p-6 mb-4 flex justify-between items-center">
+            <div>
+                <p class="text-xs text-gray-400">
+                    <?= date('d M Y H:i', strtotime($h['created_at'])) ?>
+                </p>
+                <p class="text-sm font-bold text-white">
+                    <?= esc($h['order_code']) ?>
+                </p>
+                <p class="text-xs text-gray-500">
+                    Customer — <?= esc($h['customer_name']) ?>
+                </p>
+            </div>
+
+            <div class="text-right">
+                <p class="text-sm font-bold text-primary">
+                    $<?= number_format($h['total_price'], 2) ?>
+                </p>
+                <p class="text-xs text-green-500 uppercase">
+                    Completed
+                </p>
+            </div>
+        </div>
+    <?php endforeach; ?>
+<?php else : ?>
+    <p class="text-gray-500">No history found.</p>
+<?php endif; ?>
+</div>
+
 </div>
 
 <?= $this->endSection() ?>

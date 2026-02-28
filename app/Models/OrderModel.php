@@ -13,11 +13,15 @@ class OrderModel extends Model
     protected $useTimestamps = false; // ⬅ WAJIB TAMBAHKAN
 
     protected $allowedFields = [
-        'user_id',
-        'order_code',
-        'total_price',
-        'status',
-        'pickup_schedule',
-        'created_at'
+    'user_id',
+    'order_code',
+    'total_price',
+    'status',
+    'pickup_schedule',
+    'created_at',
+    'updated_at',
+    'requested_date',
+    'requested_time',
+    'boutique_id'
     ];
 }

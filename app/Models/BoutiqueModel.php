@@ -17,7 +17,8 @@ class BoutiqueModel extends Model
         'city',
         'address',
         'ready_note',
-        'created_at'
+        'created_at',
+        'update_at'
     ];
 
     // Karena hanya ada created_at saja

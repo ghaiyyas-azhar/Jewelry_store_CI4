@@ -106,4 +106,49 @@ $routes->group('admin', [
 
     // ADMIN LOGOUT
     $routes->get('logout', 'Dashboard::logout');
+
+
+});
+
+//API
+    $routes->group('api', ['namespace' => 'App\Controllers\Api'], function($routes){
+        // ORDERS
+    $routes->get('orders', 'OrderController::index');
+    $routes->get('orders/(:num)', 'OrderController::show/$1');
+    $routes->post('orders', 'OrderController::create');
+    $routes->put('orders/(:num)', 'OrderController::update/$1');
+    $routes->delete('orders/(:num)', 'OrderController::delete/$1');
+
+    // PICKUPS
+    $routes->get('pickups', 'PickupController::index');
+    $routes->get('pickups/(:num)', 'PickupController::show/$1');
+    $routes->put('pickups/(:num)', 'PickupController::update/$1');
+
+    // PRODUCTS
+    $routes->get('products', 'ProductController::index');
+    $routes->get('products/(:num)', 'ProductController::show/$1');
+    $routes->post('products', 'ProductController::create');
+    $routes->put('products/(:num)', 'ProductController::update/$1');
+    $routes->delete('products/(:num)', 'ProductController::delete/$1');
+
+    // COLLECTIONS
+    $routes->get('collections', 'CollectionController::index');
+    $routes->get('collections/(:num)', 'CollectionController::show/$1');
+    $routes->post('collections', 'CollectionController::create');
+    $routes->put('collections/(:num)', 'CollectionController::update/$1');
+    $routes->delete('collections/(:num)', 'CollectionController::delete/$1');
+
+    // CLIENTS
+    $routes->get('clients', 'ClientController::index');
+    $routes->get('clients/(:num)', 'ClientController::show/$1');
+    $routes->post('clients', 'ClientController::create');
+    $routes->put('clients/(:num)', 'ClientController::update/$1');
+    $routes->delete('clients/(:num)', 'ClientController::delete/$1');
+
+    // BOUTIQUES
+    $routes->get('boutiques', 'BoutiqueController::index');
+    $routes->get('boutiques/(:num)', 'BoutiqueController::show/$1');
+    $routes->post('boutiques', 'BoutiqueController::create');
+    $routes->put('boutiques/(:num)', 'BoutiqueController::update/$1');
+    $routes->delete('boutiques/(:num)', 'BoutiqueController::delete/$1');
 });

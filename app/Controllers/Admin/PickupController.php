@@ -18,6 +18,7 @@ class PickupController extends BaseController
 {
     $db = \Config\Database::connect();
 
+    // ACTIVE PICKUPS (tetap)
     $appointments = $db->table('pickup_appointments pa')
         ->select('pa.*, o.order_code, o.total_price, o.status, u.name as customer_name, b.name as boutique_name')
         ->join('orders o', 'o.id = pa.order_id')
@@ -28,8 +29,18 @@ class PickupController extends BaseController
         ->get()
         ->getResultArray();
 
+    // HISTORY (ambil langsung dari orders)
+    $history = $db->table('orders o')
+        ->select('o.*, u.name as customer_name')
+        ->join('users u', 'u.id = o.user_id')
+        ->where('o.status', 'completed')
+        ->orderBy('o.created_at', 'DESC')
+        ->get()
+        ->getResultArray();
+
     return view('admin/appointments/index', [
         'appointments' => $appointments,
+        'history'      => $history
     ]);
 }
 

@@ -19,7 +19,8 @@ class UserModel extends Model
         'role',
         'status',
         'deleted_at',
-        'created_at'
+        'created_at',
+        'updated_at'
     ];
 
     protected $useTimestamps = false;

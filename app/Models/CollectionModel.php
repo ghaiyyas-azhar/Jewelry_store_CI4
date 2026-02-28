@@ -11,9 +11,10 @@ class CollectionModel extends Model
     protected $returnType = 'array';
 
     protected $allowedFields = [
-        'name',
+      'name',
       'slug',
       'description',
-      'created_at'
+      'created_at',
+      'updated_at'
     ];
 }

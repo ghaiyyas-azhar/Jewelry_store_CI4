@@ -22,7 +22,9 @@ class ProductModel extends Model
     'image',
     'stock',
     'is_active',
-    'is_pickup'
+    'is_pickup',
+    'created_at',
+    'updated_at'
 ];
 
     protected bool $allowEmptyInserts = false;
