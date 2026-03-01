@@ -40,35 +40,33 @@ class Pickup extends BaseController
         ]);
     }
 
-    public function confirm()
-    {
-        $userId = session()->get('user_id');
+    public function confirm() 
+{
+    $userId = session()->get('user_id');
 
-        if (!$userId) {
-            return redirect()->back()->with('error', 'Please login first.');
-        }
-
-        $orderModel = new OrderModel();
-
-        // Siapkan data order beserta rencana janji temunya (requested)
-        $orderData = [
-            'user_id'        => $userId,
-            'order_code'     => 'ORD-' . time(),
-            'total_price'    => $this->request->getPost('total_price'),
-            'status'         => 'pending',
-            'boutique_id'    => $this->request->getPost('boutique_id'),
-            'requested_date' => $this->request->getPost('appointment_date'), // Dari hidden input view
-            'requested_time' => $this->request->getPost('appointment_time'), // Dari hidden input view
-            'created_at'     => date('Y-m-d H:i:s')
-        ];
-
-        // Simpan ke tabel orders
-        if ($orderModel->insert($orderData)) {
-            // Berhasil: Langsung ke halaman sukses tanpa membuat pickup_appointment dulu
-            return redirect()->to('/success');
-        } else {
-            // Jika gagal simpan order, balik ke form
-            return redirect()->back()->with('error', 'Gagal memproses pesanan.');
-        }
+    if (!$userId) {
+        return redirect()->back()->with('error', 'Please login first.');
     }
+
+   $orderData = [
+    'user_id'        => $userId,
+    'product_id'     => $this->request->getPost('product_id'), // WAJIB ADA
+    'order_code'     => 'ORD-' . time(),
+    'total_price'    => $this->request->getPost('total_price'),
+    'status'         => 'pending',
+    'boutique_id'    => $this->request->getPost('boutique_id'),
+    'requested_date' => $this->request->getPost('appointment_date'),
+    'requested_time' => $this->request->getPost('appointment_time'),
+    'created_at'     => date('Y-m-d H:i:s')
+];
+
+    if ($this->orderModel->insert($orderData)) {
+
+        $orderId = $this->orderModel->getInsertID();
+
+        return redirect()->to('/success/' . $orderId);
+    }
+
+    return redirect()->back()->with('error', 'Gagal memproses pesanan.');
+}
 }

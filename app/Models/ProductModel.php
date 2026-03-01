@@ -58,18 +58,5 @@ class ProductModel extends Model
     protected $beforeFind     = [];
     protected $afterFind      = [];
     protected $beforeDelete   = [];
-    protected $afterDelete    = [];
-
-    public function detail($slug)
-{
-    $productModel = new ProductModel();
-
-    $product = $productModel
-        ->where('slug', $slug)
-        ->first();
-
-    return view('pages/product_detail', [
-        'product' => $product
-    ]);
-}
+    protected $afterDelete    = []; 
 }

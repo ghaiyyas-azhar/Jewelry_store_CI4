@@ -49,6 +49,7 @@
     <?= csrf_field(); ?>
 
     <input type="hidden" name="boutique_id" value="1">
+    <input type="hidden" name="product_id" value="<?= $product['id']; ?>">
     <input type="hidden" name="total_price" value="<?= $product['price']; ?>">
     <input type="hidden" name="appointment_date" id="pickup_date_input">
     <input type="hidden" name="appointment_time" id="pickup_time_input">

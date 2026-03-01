@@ -24,6 +24,7 @@ $routes->get('/success', function() {
 });
 $routes->get('pickup', 'Pickup::index');
 $routes->get('success', 'Home::success'); // atau ke controller mana saja yang Anda buat
+$routes->get('success/(:num)', 'Success::index/$1');
 $routes->get('admin/order/approve/(:num)', 'Admin\OrderController::approveOrder/$1');
 
 

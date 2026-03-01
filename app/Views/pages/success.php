@@ -70,16 +70,23 @@
 <div class="w-full md:w-1/2 p-10 border-r border-gray-100">
 <div class="mb-8">
 <p class="text-[10px] uppercase tracking-[0.4em] text-primary font-bold mb-2">Reserved Item</p>
-<h2 class="text-2xl font-light mb-4">Astra Diamond Choker</h2>
-<img alt="Astra Diamond Choker" class="w-full aspect-square object-cover rounded shadow-sm mb-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn1QKCpcE1NfKR3dvvYcclozLO29QRZET5ecKCwtAmHzr9O48is6LpVuFlm2SqfN_JjHpUIKIbD8twZkhZeBeMkzgLj25f0zDE7qV570kPD-3ZJrs0u0v5jUQNsI9f2dCp04ewGVu-zCM9nedwdA2pcgO2SZuALukoomA_IIDQWHnkVllCEGPolFpu__O-YBEWlrOyJ3rXTye831gGhNsCUQiJVTLtlD4v0spkMbUbb2ztajVYZ7Ea6bzMv72Zdb8QWqDla3EMmqo"/>
+<h2 class="text-2xl font-light mb-4">
+    <?= esc($product['name']); ?>
+</h2>
+<img class="w-full aspect-square object-cover rounded shadow-sm mb-6"
+     src="<?= base_url('uploads/products/'.$product['image']) ?>" />
 <div class="space-y-2 text-xs text-gray-500 uppercase tracking-widest">
 <div class="flex justify-between border-b border-gray-50 pb-2">
-<span>Boutique</span>
-<span class="text-charcoal">Fifth Avenue Flagship</span>
+<span class="text-charcoal">
+    <?= esc($product['boutique_name'] ?? '-') ?>
+</span>
 </div>
 <div class="flex justify-between border-b border-gray-50 pb-2">
 <span>Pickup Time</span>
-<span class="text-charcoal">Today, 4:30 PM</span>
+<span class="text-charcoal">
+    <?= date('F j, Y', strtotime($order['requested_date'])) ?>
+    , <?= esc($order['requested_time']) ?>
+</span>
 </div>
 </div>
 </div>
